@@ -13,169 +13,181 @@ from summarizer import (
 # Page configuration
 st.set_page_config(
     page_title="SUMMARIZER.AI",
-    page_icon="🌸", 
+    page_icon="🧬", 
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Soft Pastel & Elegant Typography CSS
+# High-Fidelity Realistic UI CSS
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
     
     :root {
-        --bg-color: #FDFBFB;
-        --sidebar-bg: #FFFFFF;
-        --accent-pastel: #E2E2E2;
-        --pastel-blue: #E3F2FD;
-        --pastel-purple: #F3E5F5;
-        --pastel-pink: #FCE4EC;
-        --pastel-green: #E8F5E9;
-        --text-main: #2D3436;
-        --text-secondary: #636E72;
+        --bg-main: #F8F9FB;
+        --charcoal: #333333;
+        --slate: #4A5568;
+        --soft-blue: #EBF8FF;
+        --glass-white: rgba(255, 255, 255, 0.9);
+        --accent-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     }
 
     html, body, [class*="css"] {
-        font-family: 'Outfit', sans-serif;
-        color: var(--text-main);
-        background-color: var(--bg-color);
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        color: var(--charcoal);
+        background-color: var(--bg-main);
     }
 
-    /* Soft 3D Shadow Style */
-    .soft-shadow {
-        box-shadow: 0 10px 30px rgba(0,0,0,0.03), 0 1px 8px rgba(0,0,0,0.02);
+    /* Multi-layered Realistic Shadow */
+    .realistic-depth {
+        box-shadow: 
+            0 1px 3px rgba(0,0,0,0.02),
+            0 10px 15px -3px rgba(0,0,0,0.03),
+            0 4px 6px -2px rgba(0,0,0,0.01);
     }
 
-    /* Elegant Header */
-    .header-section {
-        padding: 4rem 2rem;
+    /* Realistic Glass Container */
+    .glass-card {
+        background: var(--glass-white);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 24px;
+        padding: 2rem;
+        box-shadow: 
+            0 4px 6px -1px rgba(0, 0, 0, 0.05), 
+            0 2px 4px -1px rgba(0, 0, 0, 0.03),
+            inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        margin-bottom: 2rem;
+    }
+
+    /* Hero Section with Light Reflection */
+    .hero-section {
+        padding: 5rem 2rem;
         text-align: center;
-        background: linear-gradient(to bottom, #FFFFFF, #FDFBFB);
-        border-radius: 0 0 50px 50px;
+        background: radial-gradient(circle at top right, #FFFFFF, #F8F9FB);
+        border-bottom: 1px solid #E2E8F0;
         margin-bottom: 3rem;
     }
 
-    .header-section h1 {
-        font-family: 'DM+Serif+Display', serif;
-        font-size: 4.5rem;
-        color: #2D3436;
-        margin-bottom: 0.5rem;
-        letter-spacing: -1px;
+    .hero-section h1 {
+        font-weight: 800;
+        font-size: 4rem;
+        color: var(--charcoal);
+        letter-spacing: -2px;
+        line-height: 1;
+        margin-bottom: 1rem;
     }
 
-    .header-tagline {
-        font-size: 1.1rem;
-        color: var(--text-secondary);
-        font-weight: 300;
-        letter-spacing: 2px;
-        text-transform: uppercase;
+    .hero-tagline {
+        color: var(--slate);
+        font-size: 1.25rem;
+        font-weight: 400;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
-    /* Sidebar Styling */
+    /* Sidebar Refinement */
     [data-testid="stSidebar"] {
-        background-color: var(--sidebar-bg) !important;
-        border-right: 1px solid #F1F1F1;
+        background-color: #FFFFFF !important;
+        border-right: 1px solid #EDF2F7;
     }
 
-    .sidebar-logo {
-        font-family: 'DM+Serif+Display', serif;
-        font-size: 1.8rem;
-        color: #2D3436;
+    .sidebar-brand {
+        font-weight: 800;
+        font-size: 1.5rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         margin-bottom: 2rem;
     }
 
-    /* Pastel Cards */
-    .pastel-card {
-        background: #FFFFFF;
-        padding: 2.5rem;
-        border-radius: 30px;
-        border: 1px solid #F8F9FA;
-        box-shadow: 0 20px 40px rgba(0,0,0,0.02);
-        margin-bottom: 2rem;
-        transition: transform 0.4s ease;
-    }
-
-    .pastel-card:hover {
-        transform: translateY(-5px);
-    }
-
-    .card-title {
-        font-family: 'Outfit', sans-serif;
-        font-weight: 600;
-        font-size: 0.9rem;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        margin-bottom: 1.5rem;
-        color: var(--text-secondary);
-    }
-
-    /* Button Styling */
+    /* Realistic Buttons */
     .stButton>button {
         width: 100%;
-        border-radius: 20px;
-        padding: 0.8rem 2rem;
-        background-color: #2D3436;
+        border-radius: 14px;
+        padding: 0.75rem 1.5rem;
+        background: var(--charcoal);
         color: #FFFFFF;
-        font-weight: 500;
-        border: none;
-        transition: all 0.3s ease;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        font-weight: 600;
+        border: 1px solid var(--charcoal);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     }
 
     .stButton>button:hover {
-        background-color: #000000;
-        transform: scale(1.02);
+        background: #000000;
+        transform: translateY(-1px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         color: #FFFFFF;
     }
 
-    /* Tabs Styling */
+    /* Realistic Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-        background-color: transparent;
+        gap: 12px;
+        background: #EDF2F7;
+        padding: 6px;
+        border-radius: 16px;
     }
 
     .stTabs [data-baseweb="tab"] {
-        height: auto;
-        padding: 12px 24px;
-        background-color: #F8F9FA;
-        border-radius: 15px;
-        color: var(--text-secondary);
-        border: 1px solid #F1F1F1;
+        background: transparent;
+        border-radius: 12px;
+        color: var(--slate);
+        font-weight: 600;
+        border: none;
+        transition: all 0.2s ease;
     }
 
     .stTabs [aria-selected="true"] {
-        background-color: #FFFFFF !important;
-        color: #2D3436 !important;
-        box-shadow: 0 8px 15px rgba(0,0,0,0.05);
-        border: 1px solid #EEE !important;
+        background: #FFFFFF !important;
+        color: var(--charcoal) !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     }
 
-    /* Custom Metric Cards */
-    .metric-box {
-        background-color: #FFFFFF;
-        padding: 2rem;
-        border-radius: 25px;
-        text-align: center;
-        border: 1px solid #F8F9FA;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.02);
-    }
-    
-    .metric-value {
-        font-family: 'DM+Serif+Display', serif;
-        font-size: 2.5rem;
-        color: #2D3436;
+    /* Result Panels */
+    .panel-source {
+        background: #F7FAFC;
+        border: 1px solid #E2E8F0;
+        border-radius: 20px;
+        padding: 24px;
+        color: var(--slate);
+        line-height: 1.7;
     }
 
-    .metric-label {
-        font-size: 0.8rem;
-        color: var(--text-secondary);
+    .panel-summary {
+        background: #FFFFFF;
+        border: 1px solid #E2E8F0;
+        border-radius: 20px;
+        padding: 24px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        color: var(--charcoal);
+        font-weight: 500;
+        line-height: 1.7;
+    }
+
+    /* Realistic Metrics */
+    .metric-card {
+        background: #FFFFFF;
+        padding: 1.5rem;
+        border-radius: 20px;
+        border: 1px solid #E2E8F0;
+        text-align: left;
+    }
+
+    .metric-title {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--slate);
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.5rem;
     }
 
-    /* Result Cards */
-    .result-source { background-color: #F1F8FF; border-radius: 20px; padding: 20px; border: 1px solid #E1F0FF; }
-    .result-summary { background-color: #F9F5FF; border-radius: 20px; padding: 20px; border: 1px solid #F0E5FF; }
+    .metric-val {
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--charcoal);
+    }
 
 </style>
 """, unsafe_allow_html=True)
@@ -188,28 +200,29 @@ model = get_model()
 
 # Sidebar
 with st.sidebar:
-    st.markdown('<div class="sidebar-logo">Summarizer.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-brand">SUMMARIZER.AI</div>', unsafe_allow_html=True)
     choice = st.selectbox("WORKSPACE", ["Home", "Analytics", "About"])
-    st.markdown("<br><br>", unsafe_allow_html=True)
-    st.markdown("<p class='card-title'>Configuration</p>", unsafe_allow_html=True)
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.75rem; font-weight: 700; color: #A0AEC0; text-transform: uppercase;'>Engine Settings</p>", unsafe_allow_html=True)
     method = st.radio("Method", ["Simple Frequency", "TF-IDF"], label_visibility="collapsed")
     num_sent = st.slider("Depth", 1, 10, 3)
     st.markdown("---")
-    st.caption("AI Intern v3.0 • Minimalist Edition")
+    st.caption("AI Intern v4.0 • Realistic Fidelity")
 
-# Main Content
+# Main Interface
 if choice == "Home":
-    st.markdown('<div class="header-section"><h1>Knowledge Distilled.</h1><p class="header-tagline">Elegant AI-powered summarization</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="hero-section"><h1>Distill Complexity.</h1><p class="hero-tagline">A high-fidelity intelligence tool designed to transform long-form content into actionable insights.</p></div>', unsafe_allow_html=True)
     
     with st.container():
-        t1, t2, t3 = st.tabs(["Text Input", "File Upload", "Batch Mode"])
+        st.markdown('<div class="glass-card">', unsafe_allow_html=True)
+        t1, t2, t3 = st.tabs(["Manual Input", "File Upload", "Batch Processing"])
         documents_input = []
         
         with t1:
             st.markdown("<br>", unsafe_allow_html=True)
-            text_data = st.text_area("INPUT", height=300, placeholder="Paste your content here...", label_visibility="collapsed")
+            text_data = st.text_area("INPUT", height=300, placeholder="Enter or paste your text here...", label_visibility="collapsed")
             if text_data.strip():
-                documents_input = [("Pasted Content", text_data)]
+                documents_input = [("Manual Entry", text_data)]
         
         with t2:
             st.markdown("<br>", unsafe_allow_html=True)
@@ -222,7 +235,7 @@ if choice == "Home":
                     text_data = read_file(temp_path)
                     documents_input = [(file.name, text_data)]
                 except Exception as e:
-                    st.error(f"Error: {e}")
+                    st.error(f"Processing Error: {e}")
                 finally:
                     if os.path.exists(temp_path):
                         os.remove(temp_path)
@@ -239,41 +252,44 @@ if choice == "Home":
                         text_data = read_file(temp_path)
                         documents_input.append((f.name, text_data))
                     except Exception as e:
-                        st.error(f"Error: {e}")
+                        st.error(f"Batch Error: {e}")
                     finally:
                         if os.path.exists(temp_path):
                             os.remove(temp_path)
+        st.markdown('</div>', unsafe_allow_html=True)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("Summarize Content"):
-        if not documents_input:
-            st.warning("Please provide some input first.")
-        else:
-            with st.spinner("Processing..."):
-                results = []
-                for name, text in documents_input:
-                    try:
-                        res = model.summarize(text, method, num_sent)
-                        if res.strip():
-                            results.append({"name": name, "original": text, "summary": res})
-                    except Exception as e:
-                        st.error(f"Error: {e}")
-                if results:
-                    st.session_state['documents'] = results
-                    st.session_state['method'] = method
+    c_btn, _ = st.columns([1, 2])
+    with c_btn:
+        if st.button("Generate Summary"):
+            if not documents_input:
+                st.warning("Please provide input content.")
+            else:
+                with st.spinner("Analyzing..."):
+                    results = []
+                    for name, text in documents_input:
+                        try:
+                            res = model.summarize(text, method, num_sent)
+                            if res.strip():
+                                results.append({"name": name, "original": text, "summary": res})
+                        except Exception as e:
+                            st.error(f"Analysis Error: {e}")
+                    if results:
+                        st.session_state['documents'] = results
+                        st.session_state['method'] = method
 
     if 'documents' in st.session_state and st.session_state['documents']:
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.markdown("<p class='card-title'>Results</p>", unsafe_allow_html=True)
+        st.markdown("<h3 style='font-weight: 800; letter-spacing: -1px;'>Analysis Output</h3>", unsafe_allow_html=True)
         for doc in st.session_state['documents']:
-            with st.expander(f"Analysis: {doc['name']}", expanded=True):
+            with st.expander(f"Report: {doc['name']}", expanded=True):
                 c1, c2 = st.columns(2, gap="large")
                 with c1:
-                    st.markdown("<p class='card-title' style='color: #3498db;'>Source</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="result-source">{doc["original"][:1500]}...</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-size: 0.75rem; font-weight: 800; color: #718096; text-transform: uppercase; margin-bottom: 12px;'>Source Content</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="panel-source">{doc["original"][:1500]}...</div>', unsafe_allow_html=True)
                 with c2:
-                    st.markdown("<p class='card-title' style='color: #9b59b6;'>AI Summary</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="result-summary" style="font-weight: 500; line-height: 1.6;">{doc["summary"]}</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-size: 0.75rem; font-weight: 800; color: #4A5568; text-transform: uppercase; margin-bottom: 12px;'>AI Core Summary</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="panel-summary">{doc["summary"]}</div>', unsafe_allow_html=True)
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 a1, a2, _ = st.columns([1, 1, 2])
@@ -284,10 +300,10 @@ if choice == "Home":
                     pass
 
 elif choice == "Analytics":
-    st.markdown('<div class="header-section"><h1>Metrics.</h1><p class="header-tagline">Deep linguistic analysis</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="hero-section"><h1>Data Intelligence.</h1><p class="hero-tagline">Quantifying linguistic patterns and keyword distributions.</p></div>', unsafe_allow_html=True)
     docs = st.session_state.get('documents', [])
     if not docs:
-        st.info("Run a summary first to view analytics.")
+        st.info("No active analysis. Please run a summary on the Home page.")
     else:
         selected = st.selectbox("Select Document", [d['name'] for d in docs])
         doc = next(d for d in docs if d['name'] == selected)
@@ -295,25 +311,28 @@ elif choice == "Analytics":
         
         m1, m2, m3 = st.columns(3)
         with m1:
-            st.markdown(f'<div class="metric-box"><p class="metric-label">Sentences</p><p class="metric-value">{stats["num_sentences"]}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-card"><p class="metric-title">Sentences</p><p class="metric-val">{stats["num_sentences"]}</p></div>', unsafe_allow_html=True)
         with m2:
-            st.markdown(f'<div class="metric-box"><p class="metric-label">Words</p><p class="metric-value">{stats["num_words"]}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-card"><p class="metric-title">Word Count</p><p class="metric-val">{stats["num_words"]}</p></div>', unsafe_allow_html=True)
         with m3:
-            st.markdown(f'<div class="metric-box"><p class="metric-label">Top Keyword</p><p class="metric-value" style="font-size: 1.5rem; padding-top: 10px;">{stats["keywords"][0].upper() if stats["keywords"] else "N/A"}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-card"><p class="metric-title">Primary Keyword</p><p class="metric-val" style="font-size: 1.25rem; padding-top: 10px;">{stats["keywords"][0].upper() if stats["keywords"] else "N/A"}</p></div>', unsafe_allow_html=True)
         
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.markdown("<p class='card-title'>Word Distribution</p>", unsafe_allow_html=True)
+        st.markdown("<h4 style='font-weight: 700;'>Frequency Distribution</h4>", unsafe_allow_html=True)
         st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'))
 
 else:
-    st.markdown('<div class="header-section"><h1>System.</h1><p class="header-tagline">Technical foundation</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="hero-section"><h1>Technical Specs.</h1><p class="hero-tagline">Architectural overview of the summarization engine.</p></div>', unsafe_allow_html=True)
     st.markdown("""
-    <div class="pastel-card">
-        <p class="card-title">Technical Specifications</p>
-        <p>This system utilizes <b>NLTK</b> and <b>Scikit-Learn</b> to perform extractive summarization. 
-        The interface is built with a focus on <b>minimalism</b> and <b>clarity</b>, using a soft pastel palette to reduce cognitive load.</p>
-        <br>
-        <p><b>Version:</b> 3.0.0 (Minimalist Redesign)</p>
-        <p><b>Status:</b> Active</p>
+    <div class="glass-card">
+        <h4 style="font-weight: 700; margin-bottom: 1rem;">Engine Architecture</h4>
+        <p style="color: var(--slate); line-height: 1.6;">
+            The system employs a dual-model extractive approach. <b>Frequency Analysis</b> prioritizes sentences containing globally significant terms, 
+            while the <b>TF-IDF Vectorizer</b> uses statistical weighting to identify unique semantic markers across the document structure.
+        </p>
+        <hr style="border: 0; border-top: 1px solid #E2E8F0; margin: 2rem 0;">
+        <p style="font-size: 0.875rem; color: #A0AEC0;">
+            Build 4.0.2 • High Fidelity Realistic UI • Stable Release
+        </p>
     </div>
     """, unsafe_allow_html=True)
