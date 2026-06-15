@@ -12,7 +12,7 @@ meaningful summaries while preserving key information. The app supports extracti
 summarization using two scoring strategies and provides analytics on the input text.
 
 ## Link
-https://practice-ai-intern2-vzcj9jjtfdwqkev6u86oyv.streamlit.app/
+https://teyzix-ai-interntask1-xamufj2essjf9sulyzkgja.streamlit.app/
 
 ## Features
 
