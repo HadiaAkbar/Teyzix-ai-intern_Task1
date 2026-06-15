@@ -18,30 +18,30 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Natural 3D CSS with Organic Design ---
+# --- Elegant 3D Pastel Design ---
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
     
-    /* Global Styles */
+    /* Global Styles - Soft Pastel Background */
     .stApp {
         font-family: 'Inter', sans-serif;
-        background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 50%, #f0ebe5 100%);
+        background: linear-gradient(135deg, #fef9f3 0%, #f5f1ff 50%, #f0f9ff 100%);
         min-height: 100vh;
     }
 
-    /* Natural 3D Header with Depth */
+    /* Elegant 3D Header with Pastel Depth */
     .header-container {
-        background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(245,240,235,0.5) 100%);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255,255,255,0.3);
+        background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,240,255,0.6) 100%);
+        backdrop-filter: blur(12px);
+        border: 1.5px solid rgba(200,180,255,0.3);
         margin-bottom: 3rem;
         padding: 3rem 2.5rem;
-        border-radius: 24px;
+        border-radius: 28px;
         box-shadow: 
-            0 8px 32px rgba(0,0,0,0.04),
-            0 2px 8px rgba(0,0,0,0.02),
-            inset 0 1px 0 rgba(255,255,255,0.5);
+            0 12px 40px rgba(147,112,219,0.08),
+            0 4px 12px rgba(147,112,219,0.04),
+            inset 0 1px 0 rgba(255,255,255,0.8);
         position: relative;
         overflow: hidden;
     }
@@ -49,11 +49,11 @@ st.markdown("""
     .header-container::before {
         content: '';
         position: absolute;
-        top: -50%;
-        right: -20%;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+        top: -40%;
+        right: -15%;
+        width: 450px;
+        height: 450px;
+        background: radial-gradient(circle, rgba(200,150,255,0.12) 0%, transparent 70%);
         border-radius: 50%;
         pointer-events: none;
     }
@@ -61,11 +61,11 @@ st.markdown("""
     .header-container::after {
         content: '';
         position: absolute;
-        bottom: -30%;
-        left: -10%;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
+        bottom: -35%;
+        left: -8%;
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(circle, rgba(150,200,255,0.1) 0%, transparent 70%);
         border-radius: 50%;
         pointer-events: none;
     }
@@ -74,13 +74,13 @@ st.markdown("""
         font-family: 'Playfair Display', serif !important;
         font-weight: 700 !important;
         letter-spacing: -0.02em !important;
-        color: #1a1410 !important;
+        color: #6b5b95 !important;
         font-size: 3.5rem !important;
         line-height: 1.1 !important;
         margin: 0 !important;
         position: relative;
         z-index: 1;
-        background: linear-gradient(135deg, #1a1410 0%, #3d2817 100%);
+        background: linear-gradient(135deg, #6b5b95 0%, #8b7bb8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -89,7 +89,7 @@ st.markdown("""
     .tagline {
         font-size: 0.95rem;
         font-weight: 500;
-        color: #7c6b5d;
+        color: #9d84b7;
         margin-top: 1rem;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -97,58 +97,110 @@ st.markdown("""
         z-index: 1;
     }
 
-    /* Natural 3D Cards with Layering */
+    /* Elegant 3D Cards with Pastel Accents */
     .card-3d {
-        background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,245,240,0.6) 100%);
-        backdrop-filter: blur(8px);
-        border: 1px solid rgba(255,255,255,0.4);
+        background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(250,245,255,0.7) 100%);
+        backdrop-filter: blur(10px);
+        border: 1.5px solid rgba(200,180,255,0.25);
         padding: 1.75rem;
-        border-radius: 20px;
+        border-radius: 22px;
         box-shadow: 
-            0 20px 40px rgba(0,0,0,0.06),
-            0 8px 16px rgba(0,0,0,0.03),
-            inset 0 1px 0 rgba(255,255,255,0.6);
+            0 20px 50px rgba(147,112,219,0.08),
+            0 8px 20px rgba(147,112,219,0.04),
+            inset 0 1px 0 rgba(255,255,255,0.8);
         transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
         position: relative;
     }
 
     .card-3d:hover {
-        transform: translateY(-8px) translateZ(0);
+        transform: translateY(-8px);
         box-shadow: 
-            0 30px 60px rgba(0,0,0,0.12),
-            0 12px 24px rgba(0,0,0,0.06),
-            inset 0 1px 0 rgba(255,255,255,0.8);
+            0 30px 70px rgba(147,112,219,0.12),
+            0 12px 28px rgba(147,112,219,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.9);
+        border-color: rgba(200,180,255,0.4);
     }
 
-    .card-accent-green {
-        border-color: rgba(34,197,94,0.2);
-        background: linear-gradient(135deg, rgba(240,253,244,0.6) 0%, rgba(220,252,231,0.4) 100%);
+    /* Pastel Card Variants */
+    .card-mint {
+        border-color: rgba(167,243,208,0.3);
+        background: linear-gradient(135deg, rgba(240,253,250,0.7) 0%, rgba(220,252,231,0.5) 100%);
     }
 
-    .card-accent-purple {
-        border-color: rgba(139,92,246,0.2);
-        background: linear-gradient(135deg, rgba(245,240,255,0.6) 0%, rgba(232,218,255,0.4) 100%);
+    .card-mint:hover {
+        border-color: rgba(167,243,208,0.5);
+        box-shadow: 
+            0 30px 70px rgba(52,211,153,0.1),
+            0 12px 28px rgba(52,211,153,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.9);
     }
 
-    .card-accent-amber {
-        border-color: rgba(217,119,6,0.2);
-        background: linear-gradient(135deg, rgba(254,252,232,0.6) 0%, rgba(253,230,138,0.3) 100%);
+    .card-lavender {
+        border-color: rgba(196,181,253,0.3);
+        background: linear-gradient(135deg, rgba(245,240,255,0.7) 0%, rgba(232,218,255,0.5) 100%);
     }
 
-    /* Natural 3D Buttons */
+    .card-lavender:hover {
+        border-color: rgba(196,181,253,0.5);
+        box-shadow: 
+            0 30px 70px rgba(168,85,247,0.1),
+            0 12px 28px rgba(168,85,247,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .card-sky {
+        border-color: rgba(165,243,252,0.3);
+        background: linear-gradient(135deg, rgba(240,249,255,0.7) 0%, rgba(225,242,254,0.5) 100%);
+    }
+
+    .card-sky:hover {
+        border-color: rgba(165,243,252,0.5);
+        box-shadow: 
+            0 30px 70px rgba(34,211,238,0.1),
+            0 12px 28px rgba(34,211,238,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .card-rose {
+        border-color: rgba(251,207,232,0.3);
+        background: linear-gradient(135deg, rgba(255,240,245,0.7) 0%, rgba(254,226,226,0.5) 100%);
+    }
+
+    .card-rose:hover {
+        border-color: rgba(251,207,232,0.5);
+        box-shadow: 
+            0 30px 70px rgba(244,63,94,0.1),
+            0 12px 28px rgba(244,63,94,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    .card-amber {
+        border-color: rgba(253,224,71,0.3);
+        background: linear-gradient(135deg, rgba(254,252,232,0.7) 0%, rgba(253,230,138,0.5) 100%);
+    }
+
+    .card-amber:hover {
+        border-color: rgba(253,224,71,0.5);
+        box-shadow: 
+            0 30px 70px rgba(217,119,6,0.1),
+            0 12px 28px rgba(217,119,6,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+
+    /* Elegant 3D Buttons */
     .stButton > button {
         border-radius: 14px !important;
-        border: 1px solid rgba(26,20,16,0.1) !important;
-        background: linear-gradient(135deg, #2d2420 0%, #1a1410 100%) !important;
-        color: #ffffff !important;
+        border: 1.5px solid rgba(147,112,219,0.2) !important;
+        background: linear-gradient(135deg, #c8b4f8 0%, #b8a8f0 100%) !important;
+        color: #6b5b95 !important;
         font-weight: 600 !important;
         letter-spacing: 0.05em !important;
         padding: 0.9rem 2rem !important;
         transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
         box-shadow: 
-            0 10px 25px rgba(26,20,16,0.15),
-            0 4px 8px rgba(26,20,16,0.08),
-            inset 0 1px 0 rgba(255,255,255,0.1) !important;
+            0 12px 30px rgba(147,112,219,0.2),
+            0 4px 10px rgba(147,112,219,0.1),
+            inset 0 1px 0 rgba(255,255,255,0.4) !important;
         position: relative;
         overflow: hidden;
     }
@@ -160,7 +212,7 @@ st.markdown("""
         left: -100%;
         width: 100%;
         height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
         transition: left 0.5s;
     }
 
@@ -169,104 +221,109 @@ st.markdown("""
     }
 
     .stButton > button:hover {
-        background: linear-gradient(135deg, #3d3530 0%, #2d2420 100%) !important;
+        background: linear-gradient(135deg, #d8c4ff 0%, #c8b8f8 100%) !important;
         transform: translateY(-2px);
         box-shadow: 
-            0 15px 35px rgba(26,20,16,0.25),
-            0 6px 12px rgba(26,20,16,0.12),
-            inset 0 1px 0 rgba(255,255,255,0.15) !important;
+            0 16px 40px rgba(147,112,219,0.3),
+            0 6px 14px rgba(147,112,219,0.15),
+            inset 0 1px 0 rgba(255,255,255,0.5) !important;
+        border-color: rgba(147,112,219,0.3) !important;
     }
 
     .stButton > button:active {
         transform: translateY(0px);
         box-shadow: 
-            0 5px 15px rgba(26,20,16,0.15),
-            0 2px 4px rgba(26,20,16,0.06) !important;
+            0 6px 16px rgba(147,112,219,0.2),
+            0 2px 6px rgba(147,112,219,0.08) !important;
     }
 
-    /* Tabs with 3D Effect */
+    /* Tabs with Elegant Pastel */
     .stTabs [data-baseweb="tab-list"] {
         gap: 12px;
         background-color: transparent;
-        border-bottom: 1px solid rgba(0,0,0,0.05);
+        border-bottom: 1.5px solid rgba(200,180,255,0.15);
         padding-bottom: 1rem;
     }
 
     .stTabs [data-baseweb="tab"] {
-        background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(248,245,240,0.3) 100%) !important;
+        background: linear-gradient(135deg, rgba(245,240,255,0.6) 0%, rgba(240,245,255,0.4) 100%) !important;
         border-radius: 12px !important;
         padding: 0.75rem 1.5rem !important;
         font-weight: 600 !important;
-        color: #7c6b5d !important;
-        border: 1px solid rgba(0,0,0,0.05) !important;
+        color: #9d84b7 !important;
+        border: 1px solid rgba(200,180,255,0.2) !important;
         transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+        box-shadow: 0 4px 12px rgba(147,112,219,0.04) !important;
     }
 
     .stTabs [data-baseweb="tab"]:hover {
-        background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(248,245,240,0.5) 100%) !important;
+        background: linear-gradient(135deg, rgba(245,240,255,0.8) 0%, rgba(240,245,255,0.6) 100%) !important;
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(0,0,0,0.08) !important;
+        box-shadow: 0 8px 20px rgba(147,112,219,0.1) !important;
+        border-color: rgba(200,180,255,0.3) !important;
     }
 
     .stTabs [aria-selected="true"] {
-        background: linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(168,85,247,0.1) 100%) !important;
-        color: #1a1410 !important;
-        border: 1px solid rgba(139,92,246,0.3) !important;
+        background: linear-gradient(135deg, rgba(200,150,255,0.2) 0%, rgba(180,170,255,0.15) 100%) !important;
+        color: #6b5b95 !important;
+        border: 1.5px solid rgba(196,181,253,0.4) !important;
         box-shadow: 
-            0 8px 20px rgba(139,92,246,0.15),
-            inset 0 1px 0 rgba(255,255,255,0.5) !important;
+            0 10px 25px rgba(147,112,219,0.15),
+            inset 0 1px 0 rgba(255,255,255,0.6) !important;
     }
 
-    /* Metrics with 3D Depth */
+    /* Metrics with Pastel Elegance */
     [data-testid="stMetric"] {
-        background: linear-gradient(135deg, rgba(254,252,232,0.6) 0%, rgba(253,230,138,0.3) 100%);
-        border: 1px solid rgba(217,119,6,0.2);
+        background: linear-gradient(135deg, rgba(254,252,232,0.7) 0%, rgba(253,230,138,0.5) 100%);
+        border: 1.5px solid rgba(253,224,71,0.3);
         border-radius: 18px;
         padding: 1.75rem;
         box-shadow: 
             0 12px 28px rgba(217,119,6,0.08),
             0 4px 10px rgba(217,119,6,0.04),
-            inset 0 1px 0 rgba(255,255,255,0.6);
+            inset 0 1px 0 rgba(255,255,255,0.7);
         transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
     [data-testid="stMetric"]:hover {
         transform: translateY(-4px);
         box-shadow: 
-            0 16px 40px rgba(217,119,6,0.12),
-            0 6px 14px rgba(217,119,6,0.06),
+            0 16px 40px rgba(217,119,6,0.15),
+            0 6px 14px rgba(217,119,6,0.08),
             inset 0 1px 0 rgba(255,255,255,0.8);
+        border-color: rgba(253,224,71,0.5);
     }
 
-    /* Expander with 3D Effect */
+    /* Expander with Pastel Elegance */
     .stExpander {
-        border: 1px solid rgba(0,0,0,0.06) !important;
+        border: 1.5px solid rgba(200,180,255,0.2) !important;
         border-radius: 16px !important;
-        background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(248,245,240,0.5) 100%) !important;
+        background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(250,245,255,0.6) 100%) !important;
         overflow: hidden;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.04) !important;
+        box-shadow: 0 8px 20px rgba(147,112,219,0.06) !important;
         transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
     }
 
     .stExpander:hover {
-        box-shadow: 0 12px 30px rgba(0,0,0,0.08) !important;
+        box-shadow: 0 12px 30px rgba(147,112,219,0.12) !important;
+        border-color: rgba(200,180,255,0.3) !important;
     }
 
-    /* Text Area with Natural Styling */
+    /* Text Area with Pastel Styling */
     .stTextArea textarea {
         border-radius: 14px !important;
-        border: 1px solid rgba(0,0,0,0.08) !important;
-        background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,245,240,0.6) 100%) !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+        border: 1.5px solid rgba(200,180,255,0.2) !important;
+        background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(250,245,255,0.7) 100%) !important;
+        box-shadow: 0 4px 12px rgba(147,112,219,0.04) !important;
         transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
+        color: #6b5b95 !important;
     }
 
     .stTextArea textarea:focus {
-        border-color: rgba(139,92,246,0.3) !important;
+        border-color: rgba(196,181,253,0.4) !important;
         box-shadow: 
-            0 8px 20px rgba(139,92,246,0.1),
-            inset 0 1px 0 rgba(255,255,255,0.6) !important;
+            0 8px 20px rgba(147,112,219,0.12),
+            inset 0 1px 0 rgba(255,255,255,0.7) !important;
     }
 
     /* File Uploader */
@@ -276,7 +333,7 @@ st.markdown("""
 
     /* Sidebar Styling */
     [data-testid="stSidebar"] {
-        background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(248,245,240,0.5) 100%);
+        background: linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(250,245,255,0.6) 100%);
     }
 
     /* Hide Streamlit elements */
@@ -289,16 +346,16 @@ st.markdown("""
     }
 
     ::-webkit-scrollbar-track {
-        background: rgba(0,0,0,0.02);
+        background: rgba(147,112,219,0.05);
     }
 
     ::-webkit-scrollbar-thumb {
-        background: rgba(0,0,0,0.1);
+        background: rgba(147,112,219,0.2);
         border-radius: 4px;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(0,0,0,0.15);
+        background: rgba(147,112,219,0.3);
     }
 </style>
 """, unsafe_allow_html=True)
@@ -312,8 +369,8 @@ model = get_model()
 
 # --- Sidebar ---
 with st.sidebar:
-    st.markdown("<h2 style='color: #1a1410; font-weight: 700; font-family: Playfair Display, serif;'>SUMMARIZER</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #7c6b5d; font-size: 0.85rem; letter-spacing: 0.08em;'>INTELLIGENT DISTILLATION</p>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: #6b5b95; font-weight: 700; font-family: Playfair Display, serif;'>SUMMARIZER</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #9d84b7; font-size: 0.85rem; letter-spacing: 0.08em;'>ELEGANT DISTILLATION</p>", unsafe_allow_html=True)
     st.markdown("---")
     choice = st.selectbox("WORKSPACE", ["01_HOME", "02_ANALYTICS", "03_ABOUT"])
     
@@ -323,11 +380,11 @@ with st.sidebar:
     num_sent = st.slider("DEPTH", 1, 10, 3)
     
     st.markdown("---")
-    st.caption("ENGINE_REF: NATURAL_3D_V1.0")
+    st.caption("ENGINE_REF: PASTEL_3D_V1.0")
 
 # --- Home Page ---
 if "01_HOME" in choice:
-    st.markdown('<div class="header-container"><h1>Document Summarization <br> System</h1><p class="tagline">Natural Intelligence</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>Document Summarization <br> System</h1><p class="tagline">Elegant Intelligence</p></div>', unsafe_allow_html=True)
 
     # Input Area
     with st.container():
@@ -402,11 +459,11 @@ if "01_HOME" in choice:
             with st.expander(f"DOCUMENT: {doc['name'].upper()}", expanded=True):
                 c1, c2 = st.columns(2, gap="medium")
                 with c1:
-                    st.markdown("<p style='font-weight: 700; color: #1a1410; font-size: 0.95rem;'>ORIGINAL_SOURCE</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="card-3d card-accent-green" style="font-size: 0.95rem; line-height: 1.6;">{doc["original"][:1200]}...</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-weight: 700; color: #6b5b95; font-size: 0.95rem;'>ORIGINAL_SOURCE</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="card-3d card-mint" style="font-size: 0.95rem; line-height: 1.6;">{doc["original"][:1200]}...</div>', unsafe_allow_html=True)
                 with c2:
-                    st.markdown("<p style='font-weight: 700; color: #1a1410; font-size: 0.95rem;'>DISTILLED_CORE</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="card-3d card-accent-purple" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500;">{doc["summary"]}</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-weight: 700; color: #6b5b95; font-size: 0.95rem;'>DISTILLED_CORE</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="card-3d card-lavender" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500;">{doc["summary"]}</div>', unsafe_allow_html=True)
                 
                 # Export
                 st.markdown("<br>", unsafe_allow_html=True)
@@ -418,7 +475,7 @@ if "01_HOME" in choice:
                     pass
 
 elif "02_ANALYTICS" in choice:
-    st.markdown('<div class="header-container"><h1>DATA<br>METRICS.</h1><p class="tagline">Quantitative Analysis</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>DATA<br>METRICS.</h1><p class="tagline">Elegant Analysis</p></div>', unsafe_allow_html=True)
     
     docs = st.session_state.get('documents', [])
     if not docs:
@@ -436,7 +493,7 @@ elif "02_ANALYTICS" in choice:
         
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("### FREQUENCY_CHART")
-        st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'), color="#8b5cf6")
+        st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'), color="#c8b4f8")
 
 else:
     st.markdown('<div class="header-container"><h1>ABOUT<br>SYSTEM.</h1><p class="tagline">Technical Specifications</p></div>', unsafe_allow_html=True)
@@ -447,9 +504,9 @@ else:
     
     ### ARCHITECTURE
     - **MODEL:** NLTK + TF-IDF
-    - **UI:** NATURAL 3D GLASS-MORPHISM
+    - **UI:** ELEGANT 3D GLASS-MORPHISM WITH PASTEL PALETTE
     - **TYPOGRAPHY:** PLAYFAIR DISPLAY + INTER
-    - **PALETTE:** ORGANIC EARTH TONES WITH NATURAL GRADIENTS
+    - **PALETTE:** LAVENDER, MINT, SKY, ROSE, AMBER
     """)
     
     st.info("SYSTEM_STATUS: OPERATIONAL")
