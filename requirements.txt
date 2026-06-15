@@ -1,0 +1,8 @@
+nltk
+streamlit
+PyPDF2
+reportlab
+pandas
+matplotlib
+seaborn
+scikit-learn
