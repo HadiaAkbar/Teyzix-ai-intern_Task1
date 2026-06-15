@@ -13,162 +13,169 @@ from summarizer import (
 # Page configuration
 st.set_page_config(
     page_title="SUMMARIZER.AI",
-    page_icon="🕊️", 
+    page_icon="☁️", 
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Elegant Modern Pastel CSS
+# Neumorphic Pastel CSS
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
     
     :root {
-        --bg-color: #FAFAFA;
+        --bg-color: #E0E5EC;
         --text-color: #4A4A4A;
-        --text-light: #7D7D7D;
-        --pastel-blue: #EBF1FF;
-        --pastel-purple: #F3EBFF;
-        --pastel-pink: #FFEBF1;
-        --pastel-green: #EBFFFA;
-        --white: #FFFFFF;
-        --border-soft: #F0F0F0;
+        --text-light: #718096;
+        --shadow-light: #FFFFFF;
+        --shadow-dark: #A3B1C6;
+        --pastel-blue: #E3F2FD;
+        --pastel-purple: #F3E5F5;
     }
 
     html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Poppins', sans-serif;
         color: var(--text-color);
         background-color: var(--bg-color);
     }
 
-    /* Elegant Typography */
-    h1, h2, h3 {
-        font-family: 'Playfair Display', serif;
-        font-weight: 700;
-        color: #2C2C2C;
-    }
-
-    /* Airy Header */
-    .header-container {
-        padding: 6rem 2rem 4rem 2rem;
-        text-align: center;
+    /* Neumorphic Container */
+    .neu-container {
         background-color: var(--bg-color);
-    }
-
-    .header-container h1 {
-        font-size: 4.5rem;
-        margin-bottom: 1rem;
-        letter-spacing: -1px;
-    }
-
-    .tagline {
-        font-family: 'Inter', sans-serif;
-        font-weight: 300;
-        font-size: 1.1rem;
-        color: var(--text-light);
-        letter-spacing: 3px;
-        text-transform: uppercase;
-    }
-
-    /* Sidebar Refinement */
-    [data-testid="stSidebar"] {
-        background-color: var(--white) !important;
-        border-right: 1px solid var(--border-soft);
-    }
-
-    .sidebar-logo {
-        font-family: 'Playfair Display', serif;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #2C2C2C;
+        border-radius: 50px;
+        box-shadow: 20px 20px 60px var(--shadow-dark), 
+                   -20px -20px 60px var(--shadow-light);
+        padding: 3rem;
         margin-bottom: 3rem;
     }
 
-    /* Elegant Pastel Cards */
-    .elegant-card {
-        background: var(--white);
-        padding: 3rem;
-        border-radius: 40px;
-        border: 1px solid var(--border-soft);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.02);
-        margin-bottom: 2rem;
+    /* Neumorphic Inset */
+    .neu-inset {
+        background-color: var(--bg-color);
+        border-radius: 30px;
+        box-shadow: inset 8px 8px 16px var(--shadow-dark), 
+                    inset -8px -8px 16px var(--shadow-light);
+        padding: 2rem;
+        margin-bottom: 1.5rem;
     }
 
-    /* Soft 3D Buttons */
+    /* Neumorphic Button */
     .stButton>button {
         width: 100%;
-        border-radius: 100px;
+        border-radius: 20px;
         padding: 1rem 2rem;
-        background-color: #2C2C2C;
-        color: var(--white);
-        font-weight: 500;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-weight: 600;
         border: none;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        box-shadow: 6px 6px 12px var(--shadow-dark), 
+                    -6px -6px 12px var(--shadow-light);
+        transition: all 0.2s ease;
     }
 
     .stButton>button:hover {
-        background-color: #000000;
-        transform: translateY(-2px);
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        color: var(--white);
+        box-shadow: 2px 2px 5px var(--shadow-dark), 
+                    -2px -2px 5px var(--shadow-light);
+        transform: translateY(1px);
+        color: #2D3748;
     }
 
-    /* Minimalist Tabs */
+    .stButton>button:active {
+        box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                    inset -4px -4px 8px var(--shadow-light);
+    }
+
+    /* Header Styling */
+    .header-section {
+        text-align: center;
+        padding: 4rem 1rem;
+    }
+
+    .header-section h1 {
+        font-weight: 800;
+        font-size: 4.5rem;
+        color: var(--text-color);
+        letter-spacing: -2px;
+        margin-bottom: 0.5rem;
+    }
+
+    .tagline {
+        font-weight: 400;
+        font-size: 1.1rem;
+        color: var(--text-light);
+        letter-spacing: 1px;
+    }
+
+    /* Sidebar Branding */
+    [data-testid="stSidebar"] {
+        background-color: var(--bg-color) !important;
+        border-right: none;
+    }
+
+    .sidebar-logo {
+        font-weight: 800;
+        font-size: 1.8rem;
+        color: var(--text-color);
+        margin-bottom: 2rem;
+    }
+
+    /* Neumorphic Tabs */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 40px;
+        gap: 20px;
         background-color: transparent;
-        border-bottom: 1px solid var(--border-soft);
     }
 
     .stTabs [data-baseweb="tab"] {
-        height: auto;
-        padding: 15px 0px;
-        background-color: transparent;
+        background-color: var(--bg-color);
+        border-radius: 15px;
+        padding: 10px 25px;
         color: var(--text-light);
-        font-weight: 400;
+        font-weight: 500;
+        box-shadow: 4px 4px 8px var(--shadow-dark), 
+                    -4px -4px 8px var(--shadow-light);
         border: none;
+        margin-bottom: 10px;
     }
 
     .stTabs [aria-selected="true"] {
-        color: #2C2C2C !important;
-        font-weight: 600 !important;
-        border-bottom: 2px solid #2C2C2C !important;
+        box-shadow: inset 4px 4px 8px var(--shadow-dark), 
+                    inset -4px -4px 8px var(--shadow-light) !important;
+        color: var(--text-color) !important;
     }
 
     /* Result Panels */
-    .result-box {
+    .neu-panel {
+        border-radius: 25px;
         padding: 2rem;
-        border-radius: 30px;
         margin-bottom: 1.5rem;
-        line-height: 1.8;
+        line-height: 1.7;
     }
 
-    .source-panel { background-color: var(--pastel-blue); border: 1px solid #DCE6FF; }
-    .summary-panel { background-color: var(--pastel-purple); border: 1px solid #EBDCFF; }
+    .panel-blue { background-color: var(--pastel-blue); box-shadow: inset 4px 4px 8px #C1D5E3, inset -4px -4px 8px #FFFFFF; }
+    .panel-purple { background-color: var(--pastel-purple); box-shadow: inset 4px 4px 8px #D6C9D9, inset -4px -4px 8px #FFFFFF; }
 
-    /* Elegant Metrics */
-    .metric-item {
-        text-align: center;
+    /* Neumorphic Metrics */
+    .metric-card {
+        background-color: var(--bg-color);
         padding: 2rem;
-        background-color: var(--white);
         border-radius: 30px;
-        border: 1px solid var(--border-soft);
+        text-align: center;
+        box-shadow: 10px 10px 20px var(--shadow-dark), 
+                    -10px -10px 20px var(--shadow-light);
     }
 
     .metric-label {
-        font-size: 0.75rem;
+        font-size: 0.8rem;
         font-weight: 600;
         color: var(--text-light);
         text-transform: uppercase;
-        letter-spacing: 2px;
         margin-bottom: 0.5rem;
     }
 
     .metric-value {
-        font-family: 'Playfair Display', serif;
         font-size: 2.5rem;
-        color: #2C2C2C;
+        font-weight: 800;
+        color: var(--text-color);
     }
 
 </style>
@@ -182,27 +189,27 @@ model = get_model()
 
 # Sidebar
 with st.sidebar:
-    st.markdown('<div class="sidebar-logo">Summarizer.</div>', unsafe_allow_html=True)
+    st.markdown('<div class="sidebar-logo">Summarizer.AI</div>', unsafe_allow_html=True)
     choice = st.selectbox("WORKSPACE", ["Home", "Analytics", "About"])
     st.markdown("<br><br>", unsafe_allow_html=True)
-    st.markdown("<p style='font-size: 0.7rem; letter-spacing: 1px; color: var(--text-light); text-transform: uppercase;'>Settings</p>", unsafe_allow_html=True)
+    st.markdown("<p style='font-size: 0.75rem; font-weight: 700; color: var(--text-light); text-transform: uppercase;'>Config</p>", unsafe_allow_html=True)
     method = st.radio("Method", ["Simple Frequency", "TF-IDF"], label_visibility="collapsed")
     num_sent = st.slider("Depth", 1, 10, 3)
     st.markdown("---")
-    st.caption("AI Intern • Fifth Edition")
+    st.caption("AI Intern • Neumorphic Edition")
 
 # Main Page
 if choice == "Home":
-    st.markdown('<div class="header-container"><h1>Knowledge, Refined.</h1><p class="tagline">An elegant AI for the modern reader</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-section"><h1>Distill Content.</h1><p class="tagline">3D Intelligent Summarization Platform</p></div>', unsafe_allow_html=True)
     
     with st.container():
-        st.markdown('<div class="elegant-card">', unsafe_allow_html=True)
-        t1, t2, t3 = st.tabs(["Manual Entry", "File Upload", "Batch Mode"])
+        st.markdown('<div class="neu-container">', unsafe_allow_html=True)
+        t1, t2, t3 = st.tabs(["Manual Input", "File Upload", "Batch Mode"])
         documents_input = []
         
         with t1:
             st.markdown("<br>", unsafe_allow_html=True)
-            text_data = st.text_area("INPUT", height=300, placeholder="Paste your text here...", label_visibility="collapsed")
+            text_data = st.text_area("INPUT", height=300, placeholder="Paste your content here...", label_visibility="collapsed")
             if text_data.strip():
                 documents_input = [("Manual Entry", text_data)]
         
@@ -262,16 +269,16 @@ if choice == "Home":
 
     if 'documents' in st.session_state and st.session_state['documents']:
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.markdown("<h3>Analysis Report</h3>", unsafe_allow_html=True)
+        st.markdown("<h3 style='font-weight: 700;'>Generated Reports</h3>", unsafe_allow_html=True)
         for doc in st.session_state['documents']:
             with st.expander(f"Report: {doc['name']}", expanded=True):
                 c1, c2 = st.columns(2, gap="large")
                 with c1:
-                    st.markdown("<p style='font-size: 0.7rem; letter-spacing: 1px; color: var(--text-light); text-transform: uppercase; margin-bottom: 1rem;'>Original Content</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="result-box source-panel">{doc["original"][:1500]}...</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-size: 0.75rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-bottom: 1rem;'>Original Text</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="neu-panel panel-blue">{doc["original"][:1500]}...</div>', unsafe_allow_html=True)
                 with c2:
-                    st.markdown("<p style='font-size: 0.7rem; letter-spacing: 1px; color: var(--text-light); text-transform: uppercase; margin-bottom: 1rem;'>AI Core Summary</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="result-box summary-panel" style="font-weight: 500;">{doc["summary"]}</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-size: 0.75rem; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-bottom: 1rem;'>AI Summary</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="neu-panel panel-purple" style="font-weight: 500;">{doc["summary"]}</div>', unsafe_allow_html=True)
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 a1, a2, _ = st.columns([1, 1, 2])
@@ -282,10 +289,10 @@ if choice == "Home":
                     pass
 
 elif choice == "Analytics":
-    st.markdown('<div class="header-container"><h1>Data Insights.</h1><p class="tagline">The science of summarization</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-section"><h1>Data Metrics.</h1><p class="tagline">Linguistic distribution and analytics</p></div>', unsafe_allow_html=True)
     docs = st.session_state.get('documents', [])
     if not docs:
-        st.info("Run a summary on the Home page to see insights.")
+        st.info("Please run a summary on the Home page to see metrics.")
     else:
         selected = st.selectbox("Select Document", [d['name'] for d in docs])
         doc = next(d for d in docs if d['name'] == selected)
@@ -293,26 +300,26 @@ elif choice == "Analytics":
         
         m1, m2, m3 = st.columns(3)
         with m1:
-            st.markdown(f'<div class="metric-item"><p class="metric-label">Sentences</p><p class="metric-value">{stats["num_sentences"]}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-card"><p class="metric-label">Sentences</p><p class="metric-value">{stats["num_sentences"]}</p></div>', unsafe_allow_html=True)
         with m2:
-            st.markdown(f'<div class="metric-item"><p class="metric-label">Words</p><p class="metric-value">{stats["num_words"]}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-card"><p class="metric-label">Words</p><p class="metric-value">{stats["num_words"]}</p></div>', unsafe_allow_html=True)
         with m3:
-            st.markdown(f'<div class="metric-item"><p class="metric-label">Primary Keyword</p><p class="metric-value" style="font-size: 1.5rem; padding-top: 10px;">{stats["keywords"][0].upper() if stats["keywords"] else "N/A"}</p></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-card"><p class="metric-label">Top Keyword</p><p class="metric-value" style="font-size: 1.5rem; padding-top: 10px;">{stats["keywords"][0].upper() if stats["keywords"] else "N/A"}</p></div>', unsafe_allow_html=True)
         
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.markdown("<h3>Frequency Analysis</h3>", unsafe_allow_html=True)
+        st.markdown("<h4 style='font-weight: 700;'>Frequency Distribution</h4>", unsafe_allow_html=True)
         st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'))
 
 else:
-    st.markdown('<div class="header-container"><h1>System.</h1><p class="tagline">Under the hood</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-section"><h1>System.</h1><p class="tagline">Engine Specifications</p></div>', unsafe_allow_html=True)
     st.markdown("""
-    <div class="elegant-card">
-        <h3>Architecture</h3>
+    <div class="neu-container">
+        <h4 style="font-weight: 700;">Architecture</h4>
         <p style="color: var(--text-light); line-height: 1.8;">
-            This platform uses a custom implementation of extractive summarization algorithms, leveraging statistical term weighting and frequency distribution 
-            to identify the core essence of any given document.
+            The Summarizer.AI platform utilizes advanced statistical weighting and frequency analysis to distill large-scale content into concise, meaningful summaries. 
+            The interface leverages <b>Neumorphism</b> to provide a tactile, 3D experience while maintaining a soft, modern pastel aesthetic.
         </p>
         <br>
-        <p style="font-size: 0.8rem; color: var(--text-light);">Build 5.0 • Modern Elegant Edition</p>
+        <p style="font-size: 0.8rem; color: var(--text-light);">Build 6.0 • Neumorphic Pastel Edition</p>
     </div>
     """, unsafe_allow_html=True)
