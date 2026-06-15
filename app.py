@@ -319,6 +319,6 @@ else:
             The interface leverages <b>Neumorphism</b> to provide a tactile, 3D experience while maintaining a soft, modern pastel aesthetic.
         </p>
         <br>
-        <p style="font-size: 0.8rem; color: var(--text-light);">Build 6.0 • Neumorphic Pastel Edition</p>
+        <p style="font-size: 0.8rem; color: var(--text-light);">Build • Teyzix AI intern-Hadia Akbar</p>
     </div>
     """, unsafe_allow_html=True)
