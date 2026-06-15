@@ -13,33 +13,30 @@ from summarizer import (
 # --- Page Config ---
 st.set_page_config(
     page_title="SUMMARIZER.AI",
-    page_icon="■",
+    page_icon="□",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# --- Swiss Minimalist / Neo-Brutalist CSS ---
+# --- Swiss Pastel Minimalist CSS ---
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
     
-    /* Global Overrides */
+    /* Global Styles */
     .stApp {
         font-family: 'Space Grotesk', sans-serif;
-        background-color: #FFFFFF;
-    }
-
-    /* Remove standard Streamlit padding */
-    .main .block-container {
-        padding-top: 2rem;
-        max-width: 1200px;
+        background-color: #FCFAFF;
     }
 
     /* Architectural Header */
     .header-container {
-        border-bottom: 2px solid #000000;
+        border-bottom: 2px solid #1F2937;
         margin-bottom: 3rem;
         padding-bottom: 1rem;
+        background: #F3F0FF; /* Soft Pastel Lavender */
+        padding: 2rem;
+        border-radius: 0 0 40px 0;
     }
 
     h1 {
@@ -47,109 +44,91 @@ st.markdown("""
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: -0.05em !important;
-        color: #000000 !important;
-        font-size: 4.5rem !important;
-        line-height: 0.9 !important;
+        color: #1F2937 !important;
+        font-size: 4rem !important;
+        line-height: 1 !important;
         margin: 0 !important;
     }
 
     .tagline {
-        font-size: 1.2rem;
-        font-weight: 400;
-        color: #000000;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: #6D28D9;
         margin-top: 1rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
     }
 
-    /* Brutalist Buttons */
+    /* Pastel Cards */
+    .pastel-card-mint {
+        background-color: #ECFDF5;
+        border: 2px solid #059669;
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    .pastel-card-lavender {
+        background-color: #F5F3FF;
+        border: 2px solid #7C3AED;
+        padding: 1.5rem;
+        border-radius: 20px;
+    }
+
+    /* Brutalist Buttons with Pastel Accent */
     .stButton > button {
-        border-radius: 0px !important;
-        border: 2px solid #000000 !important;
-        background-color: #000000 !important;
+        border-radius: 12px !important;
+        border: 2px solid #1F2937 !important;
+        background-color: #1F2937 !important;
         color: #FFFFFF !important;
         font-weight: 700 !important;
         text-transform: uppercase !important;
         letter-spacing: 0.1em !important;
         padding: 1rem 2rem !important;
-        transition: all 0.1s ease !important;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
     .stButton > button:hover {
-        background-color: #FF4B2B !important; /* Safety Orange */
-        border-color: #FF4B2B !important;
-        color: #FFFFFF !important;
-        transform: translate(-2px, -2px);
-        box-shadow: 4px 4px 0px #000000;
+        background-color: #DDD6FE !important; /* Pastel Lavender */
+        border-color: #1F2937 !important;
+        color: #1F2937 !important;
+        transform: translate(-4px, -4px);
+        box-shadow: 6px 6px 0px #1F2937;
     }
 
-    .stButton > button:active {
-        transform: translate(0px, 0px);
-        box-shadow: 0px 0px 0px #000000;
-    }
-
-    /* Form Elements */
-    .stTextArea textarea {
-        border-radius: 0px !important;
-        border: 2px solid #000000 !important;
-        background-color: #FFFFFF !important;
-        font-family: 'Space Grotesk', sans-serif !important;
-        font-size: 1.1rem !important;
-        color: #000000 !important;
-    }
-
-    /* Metrics / Data Displays */
-    [data-testid="stMetric"] {
-        border: 2px solid #000000;
-        border-radius: 0px;
-        padding: 1.5rem;
-        background-color: #F3F4F6;
-    }
-
-    [data-testid="stMetricLabel"] {
-        text-transform: uppercase;
-        font-weight: 700;
-        letter-spacing: 0.05em;
-        color: #000000 !important;
-    }
-
-    /* Result Containers */
-    .stExpander {
-        border: 2px solid #000000 !important;
-        border-radius: 0px !important;
-        background-color: #FFFFFF !important;
-        margin-bottom: 1rem !important;
-    }
-
-    /* Sidebar Branding */
-    .sidebar-brand {
-        font-weight: 700;
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        letter-spacing: -0.02em;
-        border-bottom: 2px solid #000000;
-        padding-bottom: 1rem;
-        margin-bottom: 2rem;
-    }
-
-    /* Tabs */
+    /* Tabs with Pastel Colors */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 0px;
-        border: 2px solid #000000;
-        padding: 0px;
+        gap: 10px;
+        background-color: transparent;
     }
 
     .stTabs [data-baseweb="tab"] {
-        border-right: 2px solid #000000 !important;
-        border-radius: 0px !important;
-        padding: 1rem 2rem !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
+        background-color: #F3F4F6 !important;
+        border-radius: 12px 12px 0 0 !important;
+        padding: 0.8rem 1.5rem !important;
+        font-weight: 600 !important;
+        color: #4B5563 !important;
     }
 
     .stTabs [aria-selected="true"] {
-        background-color: #000000 !important;
-        color: #FFFFFF !important;
+        background-color: #DDD6FE !important;
+        color: #1F2937 !important;
+        border-bottom: 3px solid #7C3AED !important;
+    }
+
+    /* Metric Styling */
+    [data-testid="stMetric"] {
+        background-color: #FEF3C7; /* Pastel Amber */
+        border: 2px solid #D97706;
+        border-radius: 24px;
+        padding: 1.5rem;
+    }
+
+    /* Result Expander */
+    .stExpander {
+        border: 2px solid #E5E7EB !important;
+        border-radius: 20px !important;
+        background-color: #FFFFFF !important;
+        overflow: hidden;
     }
 
     /* Hide Streamlit elements */
@@ -167,73 +146,74 @@ model = get_model()
 
 # --- Sidebar ---
 with st.sidebar:
-    st.markdown('<div class="sidebar-brand">SUMMARIZER.AI</div>', unsafe_allow_html=True)
-    
-    choice = st.selectbox("INDEX", ["01_HOME", "02_ANALYTICS", "03_ABOUT"])
+    st.markdown("<h2 style='color: #7C3AED; font-weight: 800;'>SUMMARIZER</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #6B7280; font-size: 0.85rem;'>ELEGANT DATA DISTILLATION</p>", unsafe_allow_html=True)
+    st.markdown("---")
+    choice = st.selectbox("WORKSPACE", ["01_HOME", "02_ANALYTICS", "03_ABOUT"])
     
     st.markdown("<br><br>", unsafe_allow_html=True)
-    st.markdown("**CONFIG**")
-    method = st.radio("ALGORITHM", ["Simple Frequency", "TF-IDF"], label_visibility="collapsed")
+    st.markdown("**CONFIGURATION**")
+    method = st.radio("MODEL", ["Simple Frequency", "TF-IDF"], label_visibility="collapsed")
     num_sent = st.slider("DEPTH", 1, 10, 3)
     
     st.markdown("---")
-    st.caption("ENGINE_REF: TEYZIX_V3.0")
+    st.caption("ENGINE_REF: TEYZIX_V3.1_PASTEL")
 
-# --- Main Logic ---
+# --- Home Page ---
 if "01_HOME" in choice:
-    # Header Section
-    st.markdown('<div class="header-container"><h1>EXTRACT<br>THE CORE.</h1><p class="tagline">Architectural Document Distillation</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>REFINED<br>INSIGHTS.</h1><p class="tagline">Minimalist Architecture • Pastel Precision</p></div>', unsafe_allow_html=True)
 
-    # Input Section
-    tab1, tab2, tab3 = st.tabs(["01_TEXT", "02_FILE", "03_BATCH"])
-    
-    documents_input = []
-    
-    with tab1:
-        st.markdown("<br>", unsafe_allow_html=True)
-        text_data = st.text_area("INPUT_SOURCE", height=300, placeholder="INSERT TEXT DATA...", label_visibility="collapsed")
-        if text_data.strip():
-            documents_input = [("PASTED_DATA", text_data)]
-            
-    with tab2:
-        st.markdown("<br>", unsafe_allow_html=True)
-        file = st.file_uploader("UPLOAD_FILE", type=["txt", "pdf"], label_visibility="collapsed")
-        if file:
-            temp_path = f"temp_{file.name}"
-            try:
-                with open(temp_path, "wb") as f:
-                    f.write(file.getbuffer())
-                text_data = read_file(temp_path)
-                documents_input = [(file.name, text_data)]
-            except Exception as e:
-                st.error(f"ERR: {e}")
-            finally:
-                if os.path.exists(temp_path):
-                    os.remove(temp_path)
-                    
-    with tab3:
-        st.markdown("<br>", unsafe_allow_html=True)
-        files = st.file_uploader("UPLOAD_BATCH", type=["txt", "pdf"], accept_multiple_files=True, label_visibility="collapsed")
-        if files:
-            for f in files:
-                temp_path = f"temp_{f.name}"
+    # Input Area
+    with st.container():
+        t1, t2, t3 = st.tabs(["01_TEXT", "02_FILE", "03_BATCH"])
+        
+        documents_input = []
+        
+        with t1:
+            st.markdown("<br>", unsafe_allow_html=True)
+            text_data = st.text_area("INPUT", height=300, placeholder="INSERT TEXT DATA...", label_visibility="collapsed")
+            if text_data.strip():
+                documents_input = [("PASTED_DATA", text_data)]
+                
+        with t2:
+            st.markdown("<br>", unsafe_allow_html=True)
+            file = st.file_uploader("UPLOAD", type=["txt", "pdf"], label_visibility="collapsed")
+            if file:
+                temp_path = f"temp_{file.name}"
                 try:
                     with open(temp_path, "wb") as f:
-                        f.write(f.getbuffer())
+                        f.write(file.getbuffer())
                     text_data = read_file(temp_path)
-                    documents_input.append((f.name, text_data))
+                    documents_input = [(file.name, text_data)]
                 except Exception as e:
                     st.error(f"ERR: {e}")
                 finally:
                     if os.path.exists(temp_path):
                         os.remove(temp_path)
+                        
+        with t3:
+            st.markdown("<br>", unsafe_allow_html=True)
+            files = st.file_uploader("BATCH", type=["txt", "pdf"], accept_multiple_files=True, label_visibility="collapsed")
+            if files:
+                for f in files:
+                    temp_path = f"temp_{f.name}"
+                    try:
+                        with open(temp_path, "wb") as f:
+                            f.write(f.getbuffer())
+                        text_data = read_file(temp_path)
+                        documents_input.append((f.name, text_data))
+                    except Exception as e:
+                        st.error(f"ERR: {e}")
+                    finally:
+                        if os.path.exists(temp_path):
+                            os.remove(temp_path)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("RUN_SUMMARIZATION", use_container_width=True):
+    if st.button("RUN_DISTILLATION", use_container_width=True):
         if not documents_input:
             st.warning("NO_INPUT_DETECTED")
         else:
-            with st.spinner("DISTILLING..."):
+            with st.spinner("PROCESSING..."):
                 results = []
                 for name, text in documents_input:
                     try:
@@ -253,14 +233,14 @@ if "01_HOME" in choice:
         st.markdown("### OUTPUT_RESULTS")
         
         for doc in st.session_state['documents']:
-            with st.expander(f"FILE: {doc['name'].upper()}", expanded=True):
+            with st.expander(f"DOCUMENT: {doc['name'].upper()}", expanded=True):
                 c1, c2 = st.columns(2, gap="medium")
                 with c1:
-                    st.markdown("**ORIGINAL_SOURCE**")
-                    st.markdown(f'<div style="border: 1px solid #000; padding: 1rem; background: #f9f9f9; font-size: 0.9rem;">{doc["original"][:1200]}...</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-weight: 700; color: #1F2937;'>ORIGINAL_SOURCE</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div style="border: 2px solid #E5E7EB; padding: 1.5rem; background: #F9FAFB; border-radius: 15px; font-size: 0.95rem; line-height: 1.6;">{doc["original"][:1200]}...</div>', unsafe_allow_html=True)
                 with c2:
-                    st.markdown("**DISTILLED_CORE**")
-                    st.markdown(f'<div style="border: 1px solid #000; padding: 1rem; background: #FF4B2B; color: #FFF; font-weight: 500;">{doc["summary"]}</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-weight: 700; color: #7C3AED;'>DISTILLED_CORE</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div style="border: 2px solid #7C3AED; padding: 1.5rem; background: #F5F3FF; color: #1F2937; font-weight: 500; border-radius: 15px; line-height: 1.6;">{doc["summary"]}</div>', unsafe_allow_html=True)
                 
                 # Export
                 st.markdown("<br>", unsafe_allow_html=True)
@@ -272,7 +252,7 @@ if "01_HOME" in choice:
                     pass
 
 elif "02_ANALYTICS" in choice:
-    st.markdown('<div class="header-container"><h1>DATA<br>METRICS.</h1><p class="tagline">Quantitative Document Analysis</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>DATA<br>METRICS.</h1><p class="tagline">Quantitative Pastel Analysis</p></div>', unsafe_allow_html=True)
     
     docs = st.session_state.get('documents', [])
     if not docs:
@@ -285,26 +265,25 @@ elif "02_ANALYTICS" in choice:
         
         m1, m2, m3 = st.columns(3)
         m1.metric("SENTENCES", stats['num_sentences'])
-        m2.metric("WORD_COUNT", stats['num_words'])
-        m3.metric("TOP_KEYWORD", stats['keywords'][0].upper() if stats['keywords'] else "N/A")
+        m2.metric("WORDS", stats['num_words'])
+        m3.metric("KEYWORD", stats['keywords'][0].upper() if stats['keywords'] else "N/A")
         
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("### FREQUENCY_CHART")
-        st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'), color="#000000")
+        st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'), color="#A78BFA")
 
 else:
-    st.markdown('<div class="header-container"><h1>ABOUT<br>SYSTEM.</h1><p class="tagline">Technical Specifications</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>ABOUT<br>SYSTEM.</h1><p class="tagline">Refined Technical Specifications</p></div>', unsafe_allow_html=True)
     
     st.markdown("""
     ### PHILOSOPHY
-    SUMMARIZER.AI IS A PROFESSIONAL-GRADE DISTILLATION ENGINE. WE PRIORITIZE CLARITY, PRECISION, AND STRUCTURAL INTEGRITY. NO FLUFF. JUST THE CORE.
+    SUMMARIZER.AI COMBINES THE RIGOR OF SWISS MINIMALISM WITH THE ELEGANCE OF MODERN PASTEL CATEGORIZATION. WE BELIEVE PROFESSIONAL TOOLS SHOULD BE BOTH POWERFUL AND PLEASANT TO NAVIGATE.
     
     ### ARCHITECTURE
-    - **MODEL:** NLTK TOKENIZATION + TF-IDF WEIGHTING
-    - **UI:** SWISS MINIMALIST GRID SYSTEM
-    - **TYPE:** SPACE GROTESK GEOMETRIC
-    - **ACCENT:** SAFETY ORANGE (#FF4B2B)
+    - **MODEL:** NLTK + TF-IDF
+    - **UI:** PASTEL SWISS MINIMALIST
+    - **TYPE:** SPACE GROTESK
+    - **ACCENTS:** LAVENDER, MINT, AMBER
     """)
     
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.info("SYSTEM_STATUS: OPERATIONAL • V3.0")
+    st.info("SYSTEM_STATUS: OPERATIONAL • V3.1_PASTEL")
