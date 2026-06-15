@@ -161,7 +161,7 @@ with st.sidebar:
 
 # --- Home Page ---
 if "01_HOME" in choice:
-    st.markdown('<div class="header-container"><h1>Document Summarization System .</h1><p class="tagline">AI-Powered Document Summarization System </p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>Document Summarization <br> System</h1><p class="tagline">AI-Powered Document Summarization System </p></div>', unsafe_allow_html=True)
 
     # Input Area
     with st.container():
