@@ -374,7 +374,7 @@ with st.sidebar:
     st.markdown("---")
     
     # 🤖 AI INTERN LOG: Giving the user some workspace options.
-    choice = st.selectbox("WORKSPACE", ["01_HOME", "02_ANALYTICS", "03_ABOUT"])
+    choice = st.selectbox("WORKSPACE", ["HOME", "ANALYTICS", "ABOUT"])
     
     st.markdown("<br><br>", unsafe_allow_html=True)
     st.markdown("**CONFIGURATION**")
@@ -388,7 +388,7 @@ with st.sidebar:
 
 # 🤖 AI INTERN LOG: Routing logic based on the user's workspace choice.
 if "01_HOME" in choice:
-    st.markdown('<div class="header-container"><h1>Document Summarization <br> System</h1><p class="tagline">Powered by your friendly AI Intern 🤖</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>Document Summarization <br> System</h1><p class="tagline">Powered by AI Intern 🤖</p></div>', unsafe_allow_html=True)
 
     # 🤖 AI INTERN LOG: Setting up the input area with tabs for different input methods.
     with st.container():
