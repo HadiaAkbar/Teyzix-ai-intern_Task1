@@ -18,122 +18,288 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# --- Swiss Pastel Minimalist CSS ---
+# --- Natural 3D CSS with Organic Design ---
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
     
     /* Global Styles */
     .stApp {
-        font-family: 'Space Grotesk', sans-serif;
-        background-color: #FCFAFF;
+        font-family: 'Inter', sans-serif;
+        background: linear-gradient(135deg, #faf9f7 0%, #f5f3f0 50%, #f0ebe5 100%);
+        min-height: 100vh;
     }
 
-    /* Architectural Header */
+    /* Natural 3D Header with Depth */
     .header-container {
-        border-bottom: 2px solid #1F2937;
+        background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(245,240,235,0.5) 100%);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255,255,255,0.3);
         margin-bottom: 3rem;
-        padding-bottom: 1rem;
-        background: #F3F0FF; /* Soft Pastel Lavender */
-        padding: 2rem;
-        border-radius: 0 0 40px 0;
+        padding: 3rem 2.5rem;
+        border-radius: 24px;
+        box-shadow: 
+            0 8px 32px rgba(0,0,0,0.04),
+            0 2px 8px rgba(0,0,0,0.02),
+            inset 0 1px 0 rgba(255,255,255,0.5);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .header-container::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, rgba(139,92,246,0.08) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
+    }
+
+    .header-container::after {
+        content: '';
+        position: absolute;
+        bottom: -30%;
+        left: -10%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(circle, rgba(34,197,94,0.06) 0%, transparent 70%);
+        border-radius: 50%;
+        pointer-events: none;
     }
 
     h1 {
-        font-family: 'Space Grotesk', sans-serif !important;
+        font-family: 'Playfair Display', serif !important;
         font-weight: 700 !important;
-        text-transform: uppercase !important;
-        letter-spacing: -0.05em !important;
-        color: #1F2937 !important;
-        font-size: 4rem !important;
-        line-height: 1 !important;
+        letter-spacing: -0.02em !important;
+        color: #1a1410 !important;
+        font-size: 3.5rem !important;
+        line-height: 1.1 !important;
         margin: 0 !important;
+        position: relative;
+        z-index: 1;
+        background: linear-gradient(135deg, #1a1410 0%, #3d2817 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
     }
 
     .tagline {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
         font-weight: 500;
-        color: #6D28D9;
+        color: #7c6b5d;
         margin-top: 1rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        letter-spacing: 0.15em;
+        position: relative;
+        z-index: 1;
     }
 
-    /* Pastel Cards */
-    .pastel-card-mint {
-        background-color: #ECFDF5;
-        border: 2px solid #059669;
-        padding: 1.5rem;
+    /* Natural 3D Cards with Layering */
+    .card-3d {
+        background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,245,240,0.6) 100%);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,0.4);
+        padding: 1.75rem;
         border-radius: 20px;
+        box-shadow: 
+            0 20px 40px rgba(0,0,0,0.06),
+            0 8px 16px rgba(0,0,0,0.03),
+            inset 0 1px 0 rgba(255,255,255,0.6);
+        transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        position: relative;
     }
 
-    .pastel-card-lavender {
-        background-color: #F5F3FF;
-        border: 2px solid #7C3AED;
-        padding: 1.5rem;
-        border-radius: 20px;
+    .card-3d:hover {
+        transform: translateY(-8px) translateZ(0);
+        box-shadow: 
+            0 30px 60px rgba(0,0,0,0.12),
+            0 12px 24px rgba(0,0,0,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.8);
     }
 
-    /* Brutalist Buttons with Pastel Accent */
+    .card-accent-green {
+        border-color: rgba(34,197,94,0.2);
+        background: linear-gradient(135deg, rgba(240,253,244,0.6) 0%, rgba(220,252,231,0.4) 100%);
+    }
+
+    .card-accent-purple {
+        border-color: rgba(139,92,246,0.2);
+        background: linear-gradient(135deg, rgba(245,240,255,0.6) 0%, rgba(232,218,255,0.4) 100%);
+    }
+
+    .card-accent-amber {
+        border-color: rgba(217,119,6,0.2);
+        background: linear-gradient(135deg, rgba(254,252,232,0.6) 0%, rgba(253,230,138,0.3) 100%);
+    }
+
+    /* Natural 3D Buttons */
     .stButton > button {
-        border-radius: 12px !important;
-        border: 2px solid #1F2937 !important;
-        background-color: #1F2937 !important;
-        color: #FFFFFF !important;
-        font-weight: 700 !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.1em !important;
-        padding: 1rem 2rem !important;
-        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        border-radius: 14px !important;
+        border: 1px solid rgba(26,20,16,0.1) !important;
+        background: linear-gradient(135deg, #2d2420 0%, #1a1410 100%) !important;
+        color: #ffffff !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
+        padding: 0.9rem 2rem !important;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
+        box-shadow: 
+            0 10px 25px rgba(26,20,16,0.15),
+            0 4px 8px rgba(26,20,16,0.08),
+            inset 0 1px 0 rgba(255,255,255,0.1) !important;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .stButton > button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .stButton > button:hover::before {
+        left: 100%;
     }
 
     .stButton > button:hover {
-        background-color: #DDD6FE !important; /* Pastel Lavender */
-        border-color: #1F2937 !important;
-        color: #1F2937 !important;
-        transform: translate(-4px, -4px);
-        box-shadow: 6px 6px 0px #1F2937;
+        background: linear-gradient(135deg, #3d3530 0%, #2d2420 100%) !important;
+        transform: translateY(-2px);
+        box-shadow: 
+            0 15px 35px rgba(26,20,16,0.25),
+            0 6px 12px rgba(26,20,16,0.12),
+            inset 0 1px 0 rgba(255,255,255,0.15) !important;
     }
 
-    /* Tabs with Pastel Colors */
+    .stButton > button:active {
+        transform: translateY(0px);
+        box-shadow: 
+            0 5px 15px rgba(26,20,16,0.15),
+            0 2px 4px rgba(26,20,16,0.06) !important;
+    }
+
+    /* Tabs with 3D Effect */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 10px;
+        gap: 12px;
         background-color: transparent;
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+        padding-bottom: 1rem;
     }
 
     .stTabs [data-baseweb="tab"] {
-        background-color: #F3F4F6 !important;
-        border-radius: 12px 12px 0 0 !important;
-        padding: 0.8rem 1.5rem !important;
+        background: linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(248,245,240,0.3) 100%) !important;
+        border-radius: 12px !important;
+        padding: 0.75rem 1.5rem !important;
         font-weight: 600 !important;
-        color: #4B5563 !important;
+        color: #7c6b5d !important;
+        border: 1px solid rgba(0,0,0,0.05) !important;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+    }
+
+    .stTabs [data-baseweb="tab"]:hover {
+        background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(248,245,240,0.5) 100%) !important;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.08) !important;
     }
 
     .stTabs [aria-selected="true"] {
-        background-color: #DDD6FE !important;
-        color: #1F2937 !important;
-        border-bottom: 3px solid #7C3AED !important;
+        background: linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(168,85,247,0.1) 100%) !important;
+        color: #1a1410 !important;
+        border: 1px solid rgba(139,92,246,0.3) !important;
+        box-shadow: 
+            0 8px 20px rgba(139,92,246,0.15),
+            inset 0 1px 0 rgba(255,255,255,0.5) !important;
     }
 
-    /* Metric Styling */
+    /* Metrics with 3D Depth */
     [data-testid="stMetric"] {
-        background-color: #FEF3C7; /* Pastel Amber */
-        border: 2px solid #D97706;
-        border-radius: 24px;
-        padding: 1.5rem;
+        background: linear-gradient(135deg, rgba(254,252,232,0.6) 0%, rgba(253,230,138,0.3) 100%);
+        border: 1px solid rgba(217,119,6,0.2);
+        border-radius: 18px;
+        padding: 1.75rem;
+        box-shadow: 
+            0 12px 28px rgba(217,119,6,0.08),
+            0 4px 10px rgba(217,119,6,0.04),
+            inset 0 1px 0 rgba(255,255,255,0.6);
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     }
 
-    /* Result Expander */
+    [data-testid="stMetric"]:hover {
+        transform: translateY(-4px);
+        box-shadow: 
+            0 16px 40px rgba(217,119,6,0.12),
+            0 6px 14px rgba(217,119,6,0.06),
+            inset 0 1px 0 rgba(255,255,255,0.8);
+    }
+
+    /* Expander with 3D Effect */
     .stExpander {
-        border: 2px solid #E5E7EB !important;
-        border-radius: 20px !important;
-        background-color: #FFFFFF !important;
+        border: 1px solid rgba(0,0,0,0.06) !important;
+        border-radius: 16px !important;
+        background: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(248,245,240,0.5) 100%) !important;
         overflow: hidden;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.04) !important;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
+    }
+
+    .stExpander:hover {
+        box-shadow: 0 12px 30px rgba(0,0,0,0.08) !important;
+    }
+
+    /* Text Area with Natural Styling */
+    .stTextArea textarea {
+        border-radius: 14px !important;
+        border: 1px solid rgba(0,0,0,0.08) !important;
+        background: linear-gradient(135deg, rgba(255,255,255,0.8) 0%, rgba(248,245,240,0.6) 100%) !important;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.03) !important;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1) !important;
+    }
+
+    .stTextArea textarea:focus {
+        border-color: rgba(139,92,246,0.3) !important;
+        box-shadow: 
+            0 8px 20px rgba(139,92,246,0.1),
+            inset 0 1px 0 rgba(255,255,255,0.6) !important;
+    }
+
+    /* File Uploader */
+    .stFileUploader {
+        border-radius: 14px !important;
+    }
+
+    /* Sidebar Styling */
+    [data-testid="stSidebar"] {
+        background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(248,245,240,0.5) 100%);
     }
 
     /* Hide Streamlit elements */
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
+
+    /* Smooth scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.02);
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: rgba(0,0,0,0.1);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(0,0,0,0.15);
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -146,8 +312,8 @@ model = get_model()
 
 # --- Sidebar ---
 with st.sidebar:
-    st.markdown("<h2 style='color: #7C3AED; font-weight: 800;'>SUMMARIZER</h2>", unsafe_allow_html=True)
-    st.markdown("<p style='color: #6B7280; font-size: 0.85rem;'>ELEGANT DATA DISTILLATION</p>", unsafe_allow_html=True)
+    st.markdown("<h2 style='color: #1a1410; font-weight: 700; font-family: Playfair Display, serif;'>SUMMARIZER</h2>", unsafe_allow_html=True)
+    st.markdown("<p style='color: #7c6b5d; font-size: 0.85rem; letter-spacing: 0.08em;'>INTELLIGENT DISTILLATION</p>", unsafe_allow_html=True)
     st.markdown("---")
     choice = st.selectbox("WORKSPACE", ["01_HOME", "02_ANALYTICS", "03_ABOUT"])
     
@@ -157,11 +323,11 @@ with st.sidebar:
     num_sent = st.slider("DEPTH", 1, 10, 3)
     
     st.markdown("---")
-    st.caption("ENGINE_REF: TEYZIX_V3.1_PASTEL")
+    st.caption("ENGINE_REF: NATURAL_3D_V1.0")
 
 # --- Home Page ---
 if "01_HOME" in choice:
-    st.markdown('<div class="header-container"><h1>Document Summarization <br> System</h1><p class="tagline">AI-Powered  </p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>Document Summarization <br> System</h1><p class="tagline">Natural Intelligence</p></div>', unsafe_allow_html=True)
 
     # Input Area
     with st.container():
@@ -236,11 +402,11 @@ if "01_HOME" in choice:
             with st.expander(f"DOCUMENT: {doc['name'].upper()}", expanded=True):
                 c1, c2 = st.columns(2, gap="medium")
                 with c1:
-                    st.markdown("<p style='font-weight: 700; color: #1F2937;'>ORIGINAL_SOURCE</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div style="border: 2px solid #E5E7EB; padding: 1.5rem; background: #F9FAFB; border-radius: 15px; font-size: 0.95rem; line-height: 1.6;">{doc["original"][:1200]}...</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-weight: 700; color: #1a1410; font-size: 0.95rem;'>ORIGINAL_SOURCE</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="card-3d card-accent-green" style="font-size: 0.95rem; line-height: 1.6;">{doc["original"][:1200]}...</div>', unsafe_allow_html=True)
                 with c2:
-                    st.markdown("<p style='font-weight: 700; color: #7C3AED;'>DISTILLED_CORE</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div style="border: 2px solid #7C3AED; padding: 1.5rem; background: #F5F3FF; color: #1F2937; font-weight: 500; border-radius: 15px; line-height: 1.6;">{doc["summary"]}</div>', unsafe_allow_html=True)
+                    st.markdown("<p style='font-weight: 700; color: #1a1410; font-size: 0.95rem;'>DISTILLED_CORE</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="card-3d card-accent-purple" style="font-size: 0.95rem; line-height: 1.6; font-weight: 500;">{doc["summary"]}</div>', unsafe_allow_html=True)
                 
                 # Export
                 st.markdown("<br>", unsafe_allow_html=True)
@@ -252,7 +418,7 @@ if "01_HOME" in choice:
                     pass
 
 elif "02_ANALYTICS" in choice:
-    st.markdown('<div class="header-container"><h1>DATA<br>METRICS.</h1><p class="tagline">Quantitative Pastel Analysis</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>DATA<br>METRICS.</h1><p class="tagline">Quantitative Analysis</p></div>', unsafe_allow_html=True)
     
     docs = st.session_state.get('documents', [])
     if not docs:
@@ -270,10 +436,10 @@ elif "02_ANALYTICS" in choice:
         
         st.markdown("<br>", unsafe_allow_html=True)
         st.markdown("### FREQUENCY_CHART")
-        st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'), color="#A78BFA")
+        st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'), color="#8b5cf6")
 
 else:
-    st.markdown('<div class="header-container"><h1>ABOUT<br>SYSTEM.</h1><p class="tagline">Refined Technical Specifications</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>ABOUT<br>SYSTEM.</h1><p class="tagline">Technical Specifications</p></div>', unsafe_allow_html=True)
     
     st.markdown("""
     ### PHILOSOPHY
@@ -281,9 +447,9 @@ else:
     
     ### ARCHITECTURE
     - **MODEL:** NLTK + TF-IDF
-    - **UI:** PASTEL SWISS MINIMALIST
-    - **TYPE:** SPACE GROTESK
-    - **ACCENTS:** LAVENDER, MINT, AMBER
+    - **UI:** NATURAL 3D GLASS-MORPHISM
+    - **TYPOGRAPHY:** PLAYFAIR DISPLAY + INTER
+    - **PALETTE:** ORGANIC EARTH TONES WITH NATURAL GRADIENTS
     """)
     
-    st.info("SYSTEM_STATUS: OPERATIONAL ")
+    st.info("SYSTEM_STATUS: OPERATIONAL")
