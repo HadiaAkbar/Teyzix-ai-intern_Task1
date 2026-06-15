@@ -10,7 +10,7 @@ from summarizer import (
     generate_pdf_bytes_multi,
 )
 
-# Page configuration
+
 st.set_page_config(
     page_title="SUMMARIZER.AI",
     page_icon="☁️", 
@@ -18,7 +18,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Neumorphic Pastel CSS
 st.markdown("""
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
@@ -187,7 +186,7 @@ def get_model():
 
 model = get_model()
 
-# Sidebar
+
 with st.sidebar:
     st.markdown('<div class="sidebar-logo">Summarizer.AI</div>', unsafe_allow_html=True)
     choice = st.selectbox("WORKSPACE", ["Home", "Analytics", "About"])
@@ -198,9 +197,9 @@ with st.sidebar:
     st.markdown("---")
     st.caption("AI Intern • Neumorphic Edition")
 
-# Main Page
+
 if choice == "Home":
-    st.markdown('<div class="header-section"><h1>ocument Summarization System </h1><p class="tagline">AI-Powered: 3D Intelligent Summarization Platform</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-section"><h1>Document Summarization System </h1><p class="tagline">AI-Powered: 3D Intelligent Summarization Platform</p></div>', unsafe_allow_html=True)
     
     with st.container():
         st.markdown('<div class="neu-container">', unsafe_allow_html=True)
