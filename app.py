@@ -13,136 +13,170 @@ from summarizer import (
 # Page configuration
 st.set_page_config(
     page_title="SUMMARIZER.AI",
-    page_icon="✨", 
+    page_icon="🌸", 
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# Modern 3D/Glassmorphism CSS
+# Soft Pastel & Elegant Typography CSS
 st.markdown("""
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@300;400;500;600;700&display=swap');
     
+    :root {
+        --bg-color: #FDFBFB;
+        --sidebar-bg: #FFFFFF;
+        --accent-pastel: #E2E2E2;
+        --pastel-blue: #E3F2FD;
+        --pastel-purple: #F3E5F5;
+        --pastel-pink: #FCE4EC;
+        --pastel-green: #E8F5E9;
+        --text-main: #2D3436;
+        --text-secondary: #636E72;
+    }
+
     html, body, [class*="css"] {
-        font-family: 'Inter', sans-serif;
+        font-family: 'Outfit', sans-serif;
+        color: var(--text-main);
+        background-color: var(--bg-color);
     }
 
-    /* Background Gradient */
-    .main {
-        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    /* Soft 3D Shadow Style */
+    .soft-shadow {
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03), 0 1px 8px rgba(0,0,0,0.02);
     }
 
-    /* Glassmorphism Sidebar */
-    [data-testid="stSidebar"] {
-        background: rgba(255, 255, 255, 0.7) !important;
-        backdrop-filter: blur(10px);
-        border-right: 1px solid rgba(255, 255, 255, 0.3);
-    }
-
-    /* 3D Header Container */
-    .header-container {
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(15px);
-        border-radius: 24px;
-        padding: 3rem;
+    /* Elegant Header */
+    .header-section {
+        padding: 4rem 2rem;
         text-align: center;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 
-                    inset 0 1px 1px rgba(255, 255, 255, 0.5);
-        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: linear-gradient(to bottom, #FFFFFF, #FDFBFB);
+        border-radius: 0 0 50px 50px;
         margin-bottom: 3rem;
-        transform: perspective(1000px) rotateX(2deg);
-        transition: transform 0.3s ease;
-    }
-    
-    .header-container:hover {
-        transform: perspective(1000px) rotateX(0deg) translateY(-5px);
     }
 
-    .header-container h1 {
-        font-weight: 800;
-        background: linear-gradient(90deg, #4A90E2, #9C27B0);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-size: 3.5rem;
+    .header-section h1 {
+        font-family: 'DM+Serif+Display', serif;
+        font-size: 4.5rem;
+        color: #2D3436;
+        margin-bottom: 0.5rem;
         letter-spacing: -1px;
     }
 
-    .tagline {
-        color: #555;
-        font-size: 1.2rem;
-        font-weight: 500;
-        margin-top: 0.5rem;
+    .header-tagline {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        font-weight: 300;
+        letter-spacing: 2px;
+        text-transform: uppercase;
     }
 
-    /* 3D Cards */
-    .card-3d {
-        background: white;
-        padding: 2rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.05), 
-                    0 6px 6px rgba(0,0,0,0.05);
-        border: 1px solid #eee;
-        transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-        margin-bottom: 1.5rem;
+    /* Sidebar Styling */
+    [data-testid="stSidebar"] {
+        background-color: var(--sidebar-bg) !important;
+        border-right: 1px solid #F1F1F1;
     }
 
-    .card-3d:hover {
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    .sidebar-logo {
+        font-family: 'DM+Serif+Display', serif;
+        font-size: 1.8rem;
+        color: #2D3436;
+        margin-bottom: 2rem;
+    }
+
+    /* Pastel Cards */
+    .pastel-card {
+        background: #FFFFFF;
+        padding: 2.5rem;
+        border-radius: 30px;
+        border: 1px solid #F8F9FA;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.02);
+        margin-bottom: 2rem;
+        transition: transform 0.4s ease;
+    }
+
+    .pastel-card:hover {
         transform: translateY(-5px);
     }
 
-    .card-mint { border-left: 8px solid #00d2ff; }
-    .card-lavender { border-left: 8px solid #9C27B0; }
+    .card-title {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        color: var(--text-secondary);
+    }
 
-    /* Custom Buttons */
+    /* Button Styling */
     .stButton>button {
         width: 100%;
-        border-radius: 12px;
-        height: 3.5rem;
-        background: linear-gradient(135deg, #4A90E2 0%, #357ABD 100%);
-        color: white;
-        font-weight: 700;
+        border-radius: 20px;
+        padding: 0.8rem 2rem;
+        background-color: #2D3436;
+        color: #FFFFFF;
+        font-weight: 500;
         border: none;
-        box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     .stButton>button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
-        background: linear-gradient(135deg, #357ABD 0%, #4A90E2 100%);
+        background-color: #000000;
+        transform: scale(1.02);
+        color: #FFFFFF;
     }
 
     /* Tabs Styling */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 10px;
-        background-color: rgba(255,255,255,0.5);
-        padding: 10px;
-        border-radius: 15px;
+        gap: 24px;
+        background-color: transparent;
     }
 
     .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
-        background-color: white;
-        border-radius: 10px;
-        color: #4A90E2;
-        font-weight: 600;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        height: auto;
+        padding: 12px 24px;
+        background-color: #F8F9FA;
+        border-radius: 15px;
+        color: var(--text-secondary);
+        border: 1px solid #F1F1F1;
     }
 
     .stTabs [aria-selected="true"] {
-        background: #4A90E2 !important;
-        color: white !important;
+        background-color: #FFFFFF !important;
+        color: #2D3436 !important;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.05);
+        border: 1px solid #EEE !important;
     }
 
-    /* Sidebar Logo/Title */
-    .sidebar-title {
-        font-weight: 800;
-        font-size: 1.5rem;
-        color: #1A1A1A;
-        margin-bottom: 0.5rem;
+    /* Custom Metric Cards */
+    .metric-box {
+        background-color: #FFFFFF;
+        padding: 2rem;
+        border-radius: 25px;
+        text-align: center;
+        border: 1px solid #F8F9FA;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.02);
     }
+    
+    .metric-value {
+        font-family: 'DM+Serif+Display', serif;
+        font-size: 2.5rem;
+        color: #2D3436;
+    }
+
+    .metric-label {
+        font-size: 0.8rem;
+        color: var(--text-secondary);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    /* Result Cards */
+    .result-source { background-color: #F1F8FF; border-radius: 20px; padding: 20px; border: 1px solid #E1F0FF; }
+    .result-summary { background-color: #F9F5FF; border-radius: 20px; padding: 20px; border: 1px solid #F0E5FF; }
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -152,30 +186,30 @@ def get_model():
 
 model = get_model()
 
+# Sidebar
 with st.sidebar:
-    st.markdown('<div class="sidebar-title">SUMMARIZER.AI ✨</div>', unsafe_allow_html=True)
-    st.markdown("<p style='color: #666; font-size: 0.9rem;'>Next-gen document intelligence</p>", unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)
-    choice = st.selectbox("WORKSPACE", ["HOME", "ANALYTICS", "ABOUT"])
+    st.markdown('<div class="sidebar-logo">Summarizer.</div>', unsafe_allow_html=True)
+    choice = st.selectbox("WORKSPACE", ["Home", "Analytics", "About"])
+    st.markdown("<br><br>", unsafe_allow_html=True)
+    st.markdown("<p class='card-title'>Configuration</p>", unsafe_allow_html=True)
+    method = st.radio("Method", ["Simple Frequency", "TF-IDF"], label_visibility="collapsed")
+    num_sent = st.slider("Depth", 1, 10, 3)
     st.markdown("---")
-    st.markdown("**CONFIGURATION**")
-    method = st.radio("MODEL", ["Simple Frequency", "TF-IDF"], label_visibility="collapsed")
-    num_sent = st.slider("DEPTH", 1, 10, 3)
-    st.markdown("---")
-    st.caption("ENGINE_REF: AI_INTERN_V2.0 🧠")
+    st.caption("AI Intern v3.0 • Minimalist Edition")
 
-if choice == "HOME":
-    st.markdown('<div class="header-container"><h1>Summarizer AI</h1><p class="tagline">Distilling knowledge with 3D precision ✨</p></div>', unsafe_allow_html=True)
+# Main Content
+if choice == "Home":
+    st.markdown('<div class="header-section"><h1>Knowledge Distilled.</h1><p class="header-tagline">Elegant AI-powered summarization</p></div>', unsafe_allow_html=True)
     
     with st.container():
-        t1, t2, t3 = st.tabs(["📝 TEXT INPUT", "📁 FILE UPLOAD", "📚 BATCH PROCESS"])
+        t1, t2, t3 = st.tabs(["Text Input", "File Upload", "Batch Mode"])
         documents_input = []
         
         with t1:
             st.markdown("<br>", unsafe_allow_html=True)
-            text_data = st.text_area("INPUT", height=300, placeholder="Drop your text here and let the magic happen...", label_visibility="collapsed")
+            text_data = st.text_area("INPUT", height=300, placeholder="Paste your content here...", label_visibility="collapsed")
             if text_data.strip():
-                documents_input = [("PASTED_DATA", text_data)]
+                documents_input = [("Pasted Content", text_data)]
         
         with t2:
             st.markdown("<br>", unsafe_allow_html=True)
@@ -205,17 +239,17 @@ if choice == "HOME":
                         text_data = read_file(temp_path)
                         documents_input.append((f.name, text_data))
                     except Exception as e:
-                        st.error(f"Error with {f.name}: {e}")
+                        st.error(f"Error: {e}")
                     finally:
                         if os.path.exists(temp_path):
                             os.remove(temp_path)
 
     st.markdown("<br>", unsafe_allow_html=True)
-    if st.button("✨ RUN DISTILLATION"):
+    if st.button("Summarize Content"):
         if not documents_input:
-            st.warning("Please provide some input first!")
+            st.warning("Please provide some input first.")
         else:
-            with st.spinner("Analyzing content..."):
+            with st.spinner("Processing..."):
                 results = []
                 for name, text in documents_input:
                     try:
@@ -230,30 +264,30 @@ if choice == "HOME":
 
     if 'documents' in st.session_state and st.session_state['documents']:
         st.markdown("<br><br>", unsafe_allow_html=True)
-        st.markdown("### 📊 GENERATED INSIGHTS")
+        st.markdown("<p class='card-title'>Results</p>", unsafe_allow_html=True)
         for doc in st.session_state['documents']:
-            with st.expander(f"📄 {doc['name'].upper()}", expanded=True):
+            with st.expander(f"Analysis: {doc['name']}", expanded=True):
                 c1, c2 = st.columns(2, gap="large")
                 with c1:
-                    st.markdown("<p style='font-weight: 700; color: #4A90E2; margin-bottom: 10px;'>SOURCE CONTENT</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="card-3d card-mint">{doc["original"][:1500]}...</div>', unsafe_allow_html=True)
+                    st.markdown("<p class='card-title' style='color: #3498db;'>Source</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="result-source">{doc["original"][:1500]}...</div>', unsafe_allow_html=True)
                 with c2:
-                    st.markdown("<p style='font-weight: 700; color: #9C27B0; margin-bottom: 10px;'>AI CORE SUMMARY</p>", unsafe_allow_html=True)
-                    st.markdown(f'<div class="card-3d card-lavender" style="font-weight: 500;">{doc["summary"]}</div>', unsafe_allow_html=True)
+                    st.markdown("<p class='card-title' style='color: #9b59b6;'>AI Summary</p>", unsafe_allow_html=True)
+                    st.markdown(f'<div class="result-summary" style="font-weight: 500; line-height: 1.6;">{doc["summary"]}</div>', unsafe_allow_html=True)
                 
                 st.markdown("<br>", unsafe_allow_html=True)
                 a1, a2, _ = st.columns([1, 1, 2])
-                a1.download_button("Download TXT", generate_txt_bytes(doc['summary']), f"{doc['name']}_summary.txt", key=f"t_{doc['name']}")
+                a1.download_button("Export TXT", generate_txt_bytes(doc['summary']), f"{doc['name']}_summary.txt", key=f"t_{doc['name']}")
                 try:
-                    a2.download_button("Download PDF", generate_pdf_bytes(doc['summary']), f"{doc['name']}_summary.pdf", key=f"p_{doc['name']}")
+                    a2.download_button("Export PDF", generate_pdf_bytes(doc['summary']), f"{doc['name']}_summary.pdf", key=f"p_{doc['name']}")
                 except:
                     pass
 
-elif choice == "ANALYTICS":
-    st.markdown('<div class="header-container"><h1>Data Metrics</h1><p class="tagline">Deep-dive into document statistics 📊</p></div>', unsafe_allow_html=True)
+elif choice == "Analytics":
+    st.markdown('<div class="header-section"><h1>Metrics.</h1><p class="header-tagline">Deep linguistic analysis</p></div>', unsafe_allow_html=True)
     docs = st.session_state.get('documents', [])
     if not docs:
-        st.info("No data to analyze. Run a summary on the HOME page first!")
+        st.info("Run a summary first to view analytics.")
     else:
         selected = st.selectbox("Select Document", [d['name'] for d in docs])
         doc = next(d for d in docs if d['name'] == selected)
@@ -261,24 +295,25 @@ elif choice == "ANALYTICS":
         
         m1, m2, m3 = st.columns(3)
         with m1:
-            st.markdown(f'<div class="card-3d" style="text-align: center;"><p style="color: #666;">Sentences</p><h2>{stats["num_sentences"]}</h2></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-box"><p class="metric-label">Sentences</p><p class="metric-value">{stats["num_sentences"]}</p></div>', unsafe_allow_html=True)
         with m2:
-            st.markdown(f'<div class="card-3d" style="text-align: center;"><p style="color: #666;">Words</p><h2>{stats["num_words"]}</h2></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-box"><p class="metric-label">Words</p><p class="metric-value">{stats["num_words"]}</p></div>', unsafe_allow_html=True)
         with m3:
-            st.markdown(f'<div class="card-3d" style="text-align: center;"><p style="color: #666;">Top Keyword</p><h2>{stats["keywords"][0].upper() if stats["keywords"] else "N/A"}</h2></div>', unsafe_allow_html=True)
+            st.markdown(f'<div class="metric-box"><p class="metric-label">Top Keyword</p><p class="metric-value" style="font-size: 1.5rem; padding-top: 10px;">{stats["keywords"][0].upper() if stats["keywords"] else "N/A"}</p></div>', unsafe_allow_html=True)
         
-        st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown("### 📈 Word Frequency Analysis")
+        st.markdown("<br><br>", unsafe_allow_html=True)
+        st.markdown("<p class='card-title'>Word Distribution</p>", unsafe_allow_html=True)
         st.bar_chart(pd.DataFrame(list(stats['word_freq'].items()), columns=['Word', 'Count']).set_index('Word'))
 
 else:
-    st.markdown('<div class="header-container"><h1>About System</h1><p class="tagline">The technology behind the intelligence 🛠️</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-section"><h1>System.</h1><p class="header-tagline">Technical foundation</p></div>', unsafe_allow_html=True)
     st.markdown("""
-    <div class="card-3d">
-        <h3>Technical Stack</h3>
-        <p><b>Core:</b> Python 3.11 + Streamlit</p>
-        <p><b>NLP:</b> NLTK, Scikit-Learn (TF-IDF)</p>
-        <p><b>UI:</b> Custom CSS3 with Glassmorphism & 3D Effects</p>
-        <p><b>Status:</b> <span style="color: #00c853;">● Operational</span></p>
+    <div class="pastel-card">
+        <p class="card-title">Technical Specifications</p>
+        <p>This system utilizes <b>NLTK</b> and <b>Scikit-Learn</b> to perform extractive summarization. 
+        The interface is built with a focus on <b>minimalism</b> and <b>clarity</b>, using a soft pastel palette to reduce cognitive load.</p>
+        <br>
+        <p><b>Version:</b> 3.0.0 (Minimalist Redesign)</p>
+        <p><b>Status:</b> Active</p>
     </div>
     """, unsafe_allow_html=True)
