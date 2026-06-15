@@ -161,7 +161,7 @@ with st.sidebar:
 
 # --- Home Page ---
 if "01_HOME" in choice:
-    st.markdown('<div class="header-container"><h1>REFINED<br>INSIGHTS.</h1><p class="tagline">Minimalist Architecture • Pastel Precision</p></div>', unsafe_allow_html=True)
+    st.markdown('<div class="header-container"><h1>Document Summarization System .</h1><p class="tagline">AI-Powered Document Summarization System </p></div>', unsafe_allow_html=True)
 
     # Input Area
     with st.container():
@@ -277,7 +277,7 @@ else:
     
     st.markdown("""
     ### PHILOSOPHY
-    SUMMARIZER.AI COMBINES THE RIGOR OF SWISS MINIMALISM WITH THE ELEGANCE OF MODERN PASTEL CATEGORIZATION. WE BELIEVE PROFESSIONAL TOOLS SHOULD BE BOTH POWERFUL AND PLEASANT TO NAVIGATE.
+    SUMMARIZER.AI. WE BELIEVE PROFESSIONAL TOOLS SHOULD BE BOTH POWERFUL AND PLEASANT TO NAVIGATE.
     
     ### ARCHITECTURE
     - **MODEL:** NLTK + TF-IDF
@@ -286,4 +286,4 @@ else:
     - **ACCENTS:** LAVENDER, MINT, AMBER
     """)
     
-    st.info("SYSTEM_STATUS: OPERATIONAL • V3.1_PASTEL")
+    st.info("SYSTEM_STATUS: OPERATIONAL ")
