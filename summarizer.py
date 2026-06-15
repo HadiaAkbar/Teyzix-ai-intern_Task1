@@ -9,9 +9,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 import PyPDF2
 from typing import List, Dict, Set, Tuple, Any
 _NLTK_RESOURCES: Dict[str, str] = {
-    "tokenizers/punkt": "punkt",
-    "tokenizers/punkt_tab": "punkt_tab",
-    "corpora/stopwords": "stopwords",
+    : "punkt",
+    : "punkt_tab",
+    : "stopwords",
 }
 for path, pkg in _NLTK_RESOURCES.items():
     try:
@@ -85,7 +85,7 @@ class DocumentSummarizer:
     def abstractive_summary(self, text: str) -> str:
         if not self.ai_model:
             return ("Abstractive (transformer-based) summarization is disabled in this "
-                    "deployment for stability. Please use Simple Frequency or TF-IDF. 🚧")
+                    )
         try:
             res: Any = self.ai_model(text[:1024], max_length=130, min_length=30, do_sample=False)
             return res[0]["summary_text"]
@@ -95,11 +95,11 @@ class DocumentSummarizer:
         sents, words = self.get_sentences_and_words(text)
         if not words:
             return {
-                "word_freq": {},
-                "keywords": [],
-                "num_sentences": 0,
-                "num_words": 0,
-                "sentence_scores": pd.DataFrame(columns=["Sentence", "Score"]),
+                : {},
+                : [],
+                : 0,
+                : 0,
+                : pd.DataFrame(columns=["Sentence", "Score"]),
             }
         word_counts: pd.Series = pd.Series(words).value_counts().head(10) 
         if method == "TF-IDF":
@@ -111,11 +111,11 @@ class DocumentSummarizer:
             columns=["Sentence", "Score"],
         ).sort_values("Score", ascending=False).reset_index(drop=True)
         return {
-            "word_freq": word_counts.to_dict(),
-            "keywords": word_counts.index.tolist()[:5], 
-            "num_sentences": len(sents),
-            "num_words": len(words),
-            "sentence_scores": score_df,
+            : word_counts.to_dict(),
+            : word_counts.index.tolist()[:5], 
+            : len(sents),
+            : len(words),
+            : score_df,
         }
 def read_file(path: str) -> str:
     ext: str = os.path.splitext(path)[1].lower()
@@ -133,8 +133,7 @@ def read_file(path: str) -> str:
                         text += extracted + "\n"
             if not text.strip():
                 raise ValueError(
-                    "No extractable text found in this PDF "
-                    "(it may be a scanned/image-based document). 😔"
+                    
                 )
             return text
         else:
